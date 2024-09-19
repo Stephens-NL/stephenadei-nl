@@ -1,24 +1,18 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Stephen Adei Services',
-  description: 'Explore our range of services, from personalized tutoring to professional photography and data consultancy.',
+interface AppProps {
+  children: ReactNode;
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+function RootLayout({ children }: AppProps) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-black text-white`}>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
-  )
+  );
 }
+
+export default RootLayout;
