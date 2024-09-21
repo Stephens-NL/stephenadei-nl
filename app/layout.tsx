@@ -1,14 +1,32 @@
+// app/layout.tsx
+
 import { Metadata } from 'next';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
-
 export const metadata: Metadata = {
   title: 'Stephen Adei - Mathematician, Photographer, Musician, and Programmer',
   description: 'Stephen Adei offers services in private tutoring, photography, programming, and data consultancy. Based in Amsterdam, Stephen is a versatile professional excelling in creative and analytical fields.',
   keywords: 'Stephen Adei, private tutor, mathematics, photography, data consultancy, music production, Amsterdam, Python, LaTeX',
+  
+  // Favicon instellingen
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+    other: [
+      { rel: 'manifest', url: '/site.webmanifest' },
+      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#5bbad5' },
+    ],
+  },
+  
   openGraph: {
     title: 'Stephen Adei - Versatile Professional Services',
     description: 'Discover Stephen Adei\'s services in private tutoring, photography, programming, and data consultancy. Based in Amsterdam, Stephen is an expert in both creative and analytical fields.',
