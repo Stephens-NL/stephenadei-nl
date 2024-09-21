@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: 'Stephen Adei',
     images: [
       {
-        url: 'https://stephenadei.nl/images/jpg/banner2.jpg',
+        url: 'https://stephenadei.nl/images/jpg/banner3.jpg',
         width: 1200,
         height: 630,
         alt: 'Stephen Adei - Professional Services',
