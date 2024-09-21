@@ -226,15 +226,13 @@ export default function Home() {
                 <p className="text-xl text-emerald-100 mb-4">
                   {t('privateTutoringDesc')}
                 </p>
-                <span
-                  className="inline-block mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault(); // Voorkom standaard link gedrag
-                    openModal('/images/portraits/outdoor.jpg', t('outdoorPhotoCaption'));
-                  }}
-                >
-                  {t('startLearning')}
-                </span>
+                <Link href="https://privelessen.stephenadei.nl" passHref>
+                  <span
+                    className="inline-block mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 cursor-pointer"
+                  >
+                    {t('startLearning')}
+                  </span>
+                </Link>
               </div>
             </TiltCard>
 
@@ -243,9 +241,8 @@ export default function Home() {
               {services.slice(1).map((card, index) => (
                 <TiltCard key={index} className="block">
                   <div
-                    className={`rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between ${
-                      card.cardStyle
-                    } transition-colors duration-300 group select-none`}
+                    className={`rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between ${card.cardStyle
+                      } transition-colors duration-300 group select-none`}
                   >
                     {card.isLive ? (
                       <Link href={card.url} passHref>
