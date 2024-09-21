@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Stephen Adei - Mathematician, Photographer, Musician, and Programmer',
     description: 'Explore the services of Stephen Adei, offering private lessons, photography, programming, and data consultancy in Amsterdam.',
-    images: ['https://stephenadei.nl/images/jpg/banner.jpg'],
+    images: ['https://stephenadei.nl/images/jpg/banner3.jpg'],
     creator: '@stephenadei',
   },
   other: {

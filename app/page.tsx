@@ -18,6 +18,7 @@ import enTranslations from '../public/locales/en/common.json';
 import nlTranslations from '../public/locales/nl/common.json';
 import BentoGrid from '@/components/BentoGrid';
 import Modal from '@/components/Modal'; // Importeer de geüpdatete Modal component
+import FlagButton from '@/components/FlagButton';
 
 // Initialize i18next
 i18next.use(initReactI18next).init({
@@ -179,16 +180,9 @@ export default function Home() {
         className="fixed top-4 right-4 sm:top-8 sm:right-8 md:top-12 md:right-12 lg:top-16 lg:right-24 xl:right-32 2xl:right-64 z-50 flex flex-col items-center transition-opacity duration-300"
         style={{ opacity: buttonOpacity }}
       >
-        <button
-          onClick={toggleLanguage}
-          className="bg-emerald-700 p-2 md:p-4 rounded-full transition-transform transform hover:scale-110 focus:ring-4 focus:ring-emerald-300 text-white mb-2"
-          aria-label="Toggle Language"
-        >
-          {/* Optionally, add an icon or text here */}
+        <FlagButton currentLang={currentLang} onClick={toggleLanguage} />
+        <span className="text-white text-sm font-bold mt-2">
           {currentLang === 'en' ? 'NL' : 'EN'}
-        </button>
-        <span className="text-white text-sm font-bold">
-          {/* {currentLang === 'en' ? 'NL' : 'EN'} */}
         </span>
       </div>
 
