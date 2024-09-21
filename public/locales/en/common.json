@@ -1,69 +1,134 @@
 {
-  "name": "STEPHEN ADEI",
-  "services": "SERVICES",
-  "intro": "Discover our range of services, from personalized tutoring to professional photography and data consultancy.",
-  "about": "About Me",
-  "education": "Education",
-  "languages": "Languages",
-  "languagesContent": "English (Native), Dutch (Native), Twi (Proficient)",
-  "interests": "Interests",
-  "interestsContent": "Music, Mathematics, Photography, Programming",
-  "visitSite": "Visit Site",
-  "comingSoon": "Coming Soon",
-  "privateTutoring": "Private Tutoring",
-  "privateTutoringDesc": "Exclusive one-on-one learning experiences tailored to your needs.",
-  "photography": "Photography",
-  "photographyDesc": "Capture your special moments with our professional photography services.",
-  "dataConsultancy": "Data Consultancy",
-  "dataConsultancyDesc": "Unlock the power of your data with our expert consultancy services.",
-  "music": "Music",
-  "musicDesc": "Discover my musical creations and services.",
-  "goTo": "Go to",
-  "startLearning": "Start Learning",
-  "exploreServices": "Explore Services",
-  "viewPortfolio": "View Portfolio",
-  "listenNow": "Listen Now",
-  "aboutIntro": "About Stephen Adei",
-  "aboutContent": "A passionate educator and lifelong learner with a deep love for mathematics and its applications. From tutoring to research, I bring creativity and innovation to every aspect of my work.",
-  "educationContent": "Master in Mathematics, specializing in quantum computing and dynamic systems.",
-  "tutoringExperience": "15+ Years of Tutoring Experience",
-  "tutoringContent": "Started tutoring in high school, now offering personalized lessons in mathematics and data science.",
-  "readMore": "Read more",
-  "readLess": "Show less",
-  "tutoringExpandedContent": "In high school, I went from a 4 to a 10 in mathematics. This journey ignited my passion for teaching and led me to start my tutoring business, charging €10 per hour while others charged €5, because I was a 10.",
-  "research": "Research Highlight",
-  "researchContent": "Working on an archive about the founders of computer science in the Netherlands, in collaboration with Professor Gerard Albert.",
-  "techStack": "Technology Stack",
-  "techStackContent": "Proficient in Next.js, AI integration, and developing innovative educational tools. Building a web application that integrates AI for automatic note-taking and summarization features.",
-  
-  "aboutTeachingTitle": "About Teaching",
-  "aboutTeachingContent": "My dedication to education is further underscored by my teaching certification, allowing me to teach mathematics at all levels up to university. This enables me to adapt my teaching style to students of all ages and abilities, making complex concepts accessible and engaging.",
-  
-  "aboutLanguagesTitle": "Languages",
-  "aboutLanguagesContent": "Fluent in English and Dutch, I can effectively communicate mathematical ideas across language barriers, making me well-suited for international educational environments.",
-  
-  "aboutInterestsTitle": "Interests",
-  "aboutInterestsContent": "Besides mathematics, I have a strong interest in data science, photography, and music. These diverse passions inform my interdisciplinary approach to problem-solving and creativity in both my teaching and consultancy work.",
-  
-  "expertise": "Expertise",
-  "expertiseSummary": "A summary of my expertise in various fields.",
-  "showLess": "Show less",
-  "showMore": "Show more",
-  
-  "additionalInfo": "Additional Information",
-  
-  "outdoorPhotoCaption": "A glimpse into my world of mathematics and style - where elegance and equations meet.",
-  "teachingPhotoCaption": "Passion in action: Conveying mathematical concepts with enthusiasm and precision.",
-  "advancedEducation": "Advanced Education",
-  "educationExpandedContent": "With a Master in Mathematics, my specializations include quantum computing, dynamic systems, and data science. My research spans quantum mechanics, linear algebra, differential equations, and chaos theory.",
-  "diverseKnowledge": "Diverse Mathematical Knowledge",
-  "knowledgeDetails": "Extensive knowledge in various mathematical fields, including quantum computing, complex analysis, and mathematical modeling.",
-  "researchAppliedMath": "Research and Applied Mathematics",
-  "researchDetails": "Contributed to groundbreaking research projects related to computer science and the foundations of mathematics.",
-  "programmingSkills": "Programming Skills",
-  "programmingDetails": "Proficient in Python, JavaScript, Next.js, and machine learning for advanced data consultancy and AI integration.",
-  "problemSolving": "Problem-Solving Skills",
-  "problemSolvingDetails": "Strong analytical skills, demonstrated in both academic and real-world settings.",
-  "continuousLearning": "Lifelong Learner",
-  "learningDetails": "Committed to continuous education and staying updated with the latest developments in mathematics and technology."
+  "general": {
+    "name": "STEPHEN ADEI",
+    "intro": "Discover our range of services, from personalized tutoring to professional photography and data consultancy.",
+    "comingSoon": "Coming Soon",
+    "readMore": "Read more",
+    "readLess": "Show less",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "goTo": "Go to",
+    "visitSite": "Visit Site",
+    "additionalInfo": "Additional Information"
+  },
+  "services": {
+    "title": "SERVICES",
+    "privateTutoring": {
+      "title": "Private Tutoring",
+      "description": "Exclusive one-on-one learning experiences tailored to your needs.",
+      "cta": "Start Learning"
+    },
+    "dataConsultancy": {
+      "title": "Data Consultancy",
+      "description": "Unlock the power of your data with our expert consultancy services.",
+      "cta": "Explore Services"
+    },
+    "photography": {
+      "title": "Photography",
+      "description": "Capture your special moments with our professional photography services.",
+      "cta": "View Portfolio"
+    },
+    "music": {
+      "title": "Music",
+      "description": "Discover my musical creations and services.",
+      "cta": "Listen Now"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "About Stephen Adei",
+    "content": "A passionate educator and lifelong learner with a deep love for mathematics and its applications. From tutoring to research, I bring creativity and innovation to every aspect of my work.",
+    "sections": {
+     "academicWorks": {
+        "title": "Academic Works",
+        "content": "Here are some of my key academic projects and theses:",
+        "works": [
+          {
+            "title": "Mathematical Epidemiology: From Data to Model",
+            "type": "Bachelor's End Project",
+            "description": "An exploration of simple epidemic models and their application to real-world data.",
+            "file": "mathematical-epidemiology.pdf"
+          },
+          {
+            "title": "Entanglement-assisted zero-error communication",
+            "type": "Master's Thesis",
+            "description": "Investigation of zero-error communication capacity of noisy classical channels using shared entanglement.",
+            "file": "entanglement-assisted-communication.pdf"
+          },
+          {
+            "title": "Stability of Enzymatic Reaction Chains",
+            "type": "Biomathematics Project",
+            "description": "Analysis of the stability of enzymatic reaction chains using mathematical modeling.",
+            "file": "stability-enzymatic-reaction-chains.pdf"
+          }
+        ]
+      },
+      "interests": {
+        "title": "Interests",
+        "content": "Besides mathematics, I have a strong interest in data science, photography, and music. These diverse passions inform my interdisciplinary approach to problem-solving and creativity in both my teaching and consultancy work.",
+        "list": "Music, Mathematics, Photography, Programming"
+      },
+      "languages": {
+        "title": "Languages",
+        "content": "Fluent in English and Dutch, I can effectively communicate mathematical ideas across language barriers, making me well-suited for international educational environments.",
+        "list": "English (Native), Dutch (Native), Twi (Proficient)"
+      },
+      "teaching": {
+        "title": "About Teaching",
+        "content": "My dedication to education is further underscored by my teaching certification, allowing me to teach mathematics at all levels up to university. This enables me to adapt my teaching style to students of all ages and abilities, making complex concepts accessible and engaging."
+      },
+      "education": {
+        "title": "Education",
+        "content": "Master in Mathematics, specializing in quantum computing and dynamic systems.",
+        "expanded": "With a Master in Mathematics, my specializations include quantum computing, dynamic systems, and data science. My research spans quantum mechanics, linear algebra, differential equations, and chaos theory."
+      },
+      "tutoring": {
+        "title": "Tutoring Experience",
+        "content": "Started tutoring in high school, now offering personalized lessons in mathematics and data science.",
+        "expanded": "In high school, I went from a 4 to a 10 in mathematics. This journey ignited my passion for teaching and led me to start my tutoring business, charging €10 per hour while others charged €5, because I was a 10.",
+        "years": "15+ Years of Tutoring Experience"
+      },
+      "research": {
+        "title": "Research Highlight",
+        "content": "Working on an archive about the founders of computer science in the Netherlands, in collaboration with Professor Gerard Albert.",
+        "details": "Contributed to groundbreaking research projects related to computer science and the foundations of mathematics."
+      },
+      "techStack": {
+        "title": "Technology Stack",
+        "content": "Proficient in Next.js, AI integration, and developing innovative educational tools. Building a web application that integrates AI for automatic note-taking and summarization features."
+      }
+    }
+  },
+  "expertise": {
+    "title": "Expertise",
+    "summary": "A summary of my expertise in various fields.",
+    "items": {
+      "advancedEducation": "Advanced Education",
+      "diverseKnowledge": {
+        "title": "Diverse Mathematical Knowledge",
+        "details": "Extensive knowledge in various mathematical fields, including quantum computing, complex analysis, and mathematical modeling."
+      },
+      "problemSolving": {
+        "title": "Problem-Solving Skills",
+        "details": "Strong analytical skills, demonstrated in both academic and real-world settings."
+      },
+      "programmingSkills": {
+        "title": "Programming Skills",
+        "details": "Proficient in Python, JavaScript, Next.js, and machine learning for advanced data consultancy and AI integration."
+      },
+      "lifelongLearner": {
+        "title": "Lifelong Learner",
+        "details": "Committed to continuous education and staying updated with the latest developments in mathematics and technology."
+      },
+      "researchAppliedMath": "Research and Applied Mathematics"
+    }
+  },
+  "photos": {
+    "outdoor": {
+      "caption": "A glimpse into my world of mathematics and style - where elegance and equations meet."
+    },
+    "teaching": {
+      "caption": "Passion in action: Conveying mathematical concepts with enthusiasm and precision."
+    }
+  }
 }

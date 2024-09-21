@@ -1,73 +1,131 @@
 {
-  "name": "STEPHEN ADEI",
-  "services": "DIENSTEN",
-  "intro": "Ontdek ons aanbod aan diensten, van gepersonaliseerde bijles tot professionele fotografie en data consultancy.",
-  "about": "Over Mij",
-  "education": "Opleiding",
-  "languages": "Talen",
-  "languagesContent": "Engels (Native), Nederlands (Native), Twi (Voldoende)",
-  "interests": "Interesses",
-  "interestsContent": "Muziek, Wiskunde, Fotografie, Programmeren",
-  "visitSite": "Bezoek Site",
-  "comingSoon": "Binnenkort",
-  "privateTutoring": "Privé Bijles",
-  "privateTutoringDesc": "Exclusieve één-op-één leerervaringen op maat gemaakt voor jouw behoeften.",
-  "photography": "Fotografie",
-  "photographyDesc": "Leg jouw speciale momenten vast met onze professionele fotografiediensten.",
-  "dataConsultancy": "Data Consultancy",
-  "dataConsultancyDesc": "Ontgrendel de kracht van jouw data met onze deskundige consultancy diensten.",
-  "music": "Muziek",
-  "musicDesc": "Ontdek mijn muzikale creaties en diensten.",
-  "goTo": "Ga naar",
-  "startLearning": "Begin met Leren",
-  "exploreServices": "Ontdek Diensten",
-  "viewPortfolio": "Bekijk Portfolio",
-  "listenNow": "Luister Nu",
-  "aboutIntro": "Over Stephen Adei",
-  "aboutContent": "Een gepassioneerde opvoeder en levenslange leerling met een diepe liefde voor wiskunde en de toepassingen ervan. Van bijles tot onderzoek, ik breng creativiteit en innovatie in elk aspect van mijn werk.",
-  "educationContent": "Master in Wiskunde, gespecialiseerd in quantum informatica en dynamische systemen.",
-  "tutoringExperience": "15+ Jaar Bijleservaring",
-  "tutoringContent": "Gestart met bijles op de middelbare school, nu bied ik gepersonaliseerde lessen in wiskunde en data science.",
-  "readMore": "Lees meer",
-  "readLess": "Toon minder",
-  "tutoringExpandedContent": "Op de middelbare school ging ik van een 4 naar een 10 in wiskunde. Deze reis wakkerde mijn passie voor lesgeven aan en leidde me tot het starten van mijn bijlesbedrijf, waarbij ik €10 per uur vroeg terwijl anderen €5 vroegen, omdat ik een 10 was.",
-  "research": "Onderzoeks Hoogtepunt",
-  "researchContent": "Werkt aan een archief over de oprichters van de computerwetenschappen in Nederland, in samenwerking met Professor Gerard Albert.",
-  "techStack": "Technologische Stack",
-  "techStackContent": "Bekwaam in Next.js, AI-integratie en het ontwikkelen van innovatieve educatieve tools. Bouwt een webapplicatie die AI integreert voor automatische notitie- en samenvattingsfuncties.",
-  
-
-  "aboutTeachingTitle": "Over Lesgeven",
-  "aboutTeachingContent": "Mijn toewijding aan onderwijs wordt verder onderstreept door mijn lesbevoegdheid, waarmee ik wiskunde mag onderwijzen op alle niveaus tot en met universiteit. Dit stelt me in staat mijn lesstijl aan te passen aan studenten van alle leeftijden en capaciteiten, waardoor complexe concepten toegankelijk en boeiend worden gemaakt.",
-  
-  "aboutLanguagesTitle": "Talen",
-  "aboutLanguagesContent": "Vloeiend in Engels en Nederlands, kan ik effectief wiskundige ideeën over taalgrenzen heen communiceren, waardoor ik goed geschikt ben voor internationale onderwijsomgevingen.",
-  
-  "aboutInterestsTitle": "Interesses",
-  "aboutInterestsContent": "Naast wiskunde heb ik een sterke interesse in data science, fotografie en muziek. Deze diverse passies informeren mijn interdisciplinaire aanpak van probleemoplossing en creativiteit in zowel mijn onderwijs- als consultancywerk.",
-  
-
-  "expertise": "Expertise",
-  "expertiseSummary": "Een samenvatting van mijn expertise op verschillende gebieden.",
-  "showLess": "Toon minder",
-  "showMore": "Toon meer",
-  
-
-  "additionalInfo": "Aanvullende Informatie",
-  
-
-  "outdoorPhotoCaption": "Een kijkje in mijn wereld van wiskunde en stijl - waar elegantie en vergelijkingen samenkomen.",
-  "teachingPhotoCaption": "Passie in actie: Het overbrengen van wiskundige concepten met enthousiasme en precisie.",
-  "advancedEducation": "Geavanceerde Opleiding",
-  "educationExpandedContent": "Met een Master in Wiskunde, zijn mijn specialisaties quantum informatica, dynamische systemen en data science. Mijn onderzoek bestrijkt quantummechanica, lineaire algebra, differentiaalvergelijkingen en chaostheorie.",
-  "diverseKnowledge": "Diverse Wiskundige Kennis",
-  "knowledgeDetails": "Uitgebreide kennis over diverse wiskundige velden, waaronder quantum informatica, complexe analyse en wiskundige modellering.",
-  "researchAppliedMath": "Onderzoek en Toegepaste Wiskunde",
-  "researchDetails": "Geleverd aan baanbrekende onderzoeksprojecten gerelateerd aan computerwetenschappen en de fundamenten van wiskunde.",
-  "programmingSkills": "Programmeervaardigheden",
-  "programmingDetails": "Bekwaam in Python, JavaScript, Next.js en machine learning voor geavanceerde data consultancy en AI-integratie.",
-  "problemSolving": "Probleemoplossende Vaardigheden",
-  "problemSolvingDetails": "Sterke analytische vaardigheden, gedemonstreerd in zowel academische als real-world settings.",
-  "continuousLearning": "Levenslange Leerling",
-  "learningDetails": "Toegewijd aan continue educatie en het bijblijven bij de laatste ontwikkelingen in wiskunde en technologie."
+  "general": {
+    "name": "STEPHEN ADEI",
+    "intro": "Ontdek ons aanbod van diensten, van gepersonaliseerde bijles tot professionele fotografie en dataconsultancy.",
+    "comingSoon": "Binnenkort beschikbaar",
+    "readMore": "Lees meer",
+    "readLess": "Lees minder",
+    "showMore": "Toon meer",
+    "showLess": "Toon minder",
+    "goTo": "Ga naar",
+    "visitSite": "Bezoek site",
+    "additionalInfo": "Aanvullende informatie"
+  },
+  "services": {
+    "title": "DIENSTEN",
+    "privateTutoring": {
+      "title": "Privé Bijles",
+      "description": "Exclusieve één-op-één leerervaringen afgestemd op jouw behoeften.",
+      "cta": "Begin met leren"
+    },
+    "dataConsultancy": {
+      "title": "Dataconsultancy",
+      "description": "Ontgrendel de kracht van jouw data met onze deskundige consultancydiensten.",
+      "cta": "Ontdek diensten"
+    },
+    "photography": {
+      "title": "Fotografie",
+      "description": "Leg jouw speciale momenten vast met onze professionele fotografiediensten.",
+      "cta": "Bekijk portfolio"
+    },
+    "music": {
+      "title": "Muziek",
+      "description": "Ontdek mijn muzikale creaties en diensten.",
+      "cta": "Luister nu"
+    }
+  },
+  "about": {
+    "title": "Over Mij",
+    "intro": "Over Stephen Adei",
+    "content": "Een gepassioneerde opvoeder en levenslange leerling met een diepe liefde voor wiskunde en de toepassingen ervan. Van bijles tot onderzoek, ik breng creativiteit en innovatie in elk aspect van mijn werk.",
+    "sections": {
+      "academicWorks": {
+        "title": "Academische Werken",
+        "content": "Hier zijn enkele van mijn belangrijkste academische projecten en scripties:",
+        "works": [
+          {
+            "title": "Mathematische Epidemiologie: Van Data naar Model",
+            "type": "Bachelor Eindproject",
+            "description": "Een verkenning van eenvoudige epidemische modellen en hun toepassing op real-world data."
+          },
+          {
+            "title": "Entanglement-assisted zero-error communicatie",
+            "type": "Master Thesis",
+            "description": "Onderzoek naar de zero-error communicatiecapaciteit van ruisende klassieke kanalen met behulp van gedeelde verstrengeling."
+          },
+          {
+            "title": "Stabiliteit van Enzymatische Reactieketens",
+            "type": "Biomathematica Project",
+            "description": "Analyse van de stabiliteit van enzymatische reactieketens met behulp van wiskundige modellering."
+          }
+        ]
+      },
+      "interests": {
+        "title": "Interesses",
+        "content": "Naast wiskunde heb ik een sterke interesse in data science, fotografie en muziek. Deze diverse passies informeren mijn interdisciplinaire benadering van probleemoplossing en creativiteit in zowel mijn onderwijs als consultancydiensten.",
+        "list": "Muziek, Wiskunde, Fotografie, Programmeren"
+      },
+      "languages": {
+        "title": "Talen",
+        "content": "Vloeiend in Engels en Nederlands, ik kan wiskundige ideeën effectief communiceren over taalbarrières heen, waardoor ik goed geschikt ben voor internationale onderwijsomgevingen.",
+        "list": "Engels (Moedertaal), Nederlands (Moedertaal), Twi (Gevorderd)"
+      },
+      "teaching": {
+        "title": "Over Onderwijs",
+        "content": "Mijn toewijding aan onderwijs wordt verder onderstreept door mijn onderwijsbevoegdheid, waardoor ik wiskunde kan onderwijzen op alle niveaus tot aan de universiteit. Dit stelt me in staat mijn lesstijl aan te passen aan studenten van alle leeftijden en niveaus, waardoor complexe concepten toegankelijk en boeiend worden."
+      },
+      "education": {
+        "title": "Opleiding",
+        "content": "Master in Wiskunde, gespecialiseerd in quantum computing en dynamische systemen.",
+        "expanded": "Met een Master in Wiskunde omvatten mijn specialisaties quantum computing, dynamische systemen en data science. Mijn onderzoek bestrijkt quantummechanica, lineaire algebra, differentiaalvergelijkingen en chaostheorie."
+      },
+      "tutoring": {
+        "title": "Bijleservaring",
+        "content": "Begonnen met bijles geven op de middelbare school, nu gepersonaliseerde lessen in wiskunde en data science aanbieden.",
+        "expanded": "Op de middelbare school ging ik van een 4 naar een 10 in wiskunde. Deze reis ontketende mijn passie voor lesgeven en leidde ertoe dat ik mijn bijlesbedrijf begon, waarbij ik €10 per uur rekende terwijl anderen €5 vroegen, omdat ik een 10 was.",
+        "years": "15+ Jaar Bijleservaring"
+      },
+      "research": {
+        "title": "Onderzoekshoogtepunt",
+        "content": "Werken aan een archief over de grondleggers van de informatica in Nederland, in samenwerking met Professor Gerard Albert.",
+        "details": "Bijgedragen aan baanbrekende onderzoeksprojecten gerelateerd aan informatica en de fundamenten van wiskunde."
+      },
+      "techStack": {
+        "title": "Technologie Stack",
+        "content": "Bekwaam in Next.js, AI-integratie en het ontwikkelen van innovatieve educatieve tools. Het bouwen van een webapplicatie die AI integreert voor automatische notities en samenvattingsfuncties."
+      }
+    }
+  },
+  "expertise": {
+    "title": "Expertise",
+    "summary": "Een samenvatting van mijn expertise in verschillende velden.",
+    "items": {
+      "advancedEducation": "Geavanceerde Opleiding",
+      "diverseKnowledge": {
+        "title": "Diverse Wiskundige Kennis",
+        "details": "Uitgebreide kennis in verschillende wiskundige velden, waaronder quantum computing, complexe analyse en wiskundige modellering."
+      },
+      "problemSolving": {
+        "title": "Probleemoplossende Vaardigheden",
+        "details": "Sterke analytische vaardigheden, aangetoond in zowel academische als real-world settings."
+      },
+      "programmingSkills": {
+        "title": "Programmeervaardigheden",
+        "details": "Bekwaam in Python, JavaScript, Next.js en machine learning voor geavanceerde dataconsultancy en AI-integratie."
+      },
+      "lifelongLearner": {
+        "title": "Levenslange Leerling",
+        "details": "Toegewijd aan voortdurende educatie en het bijblijven met de laatste ontwikkelingen in wiskunde en technologie."
+      },
+      "researchAppliedMath": "Onderzoek en Toegepaste Wiskunde"
+    }
+  },
+  "photos": {
+    "outdoor": {
+      "caption": "Een glimp in mijn wereld van wiskunde en stijl - waar elegantie en vergelijkingen samenkomen."
+    },
+    "teaching": {
+      "caption": "Passie in actie: Wiskundige concepten overbrengen met enthousiasme en precisie."
+    }
+  }
 }

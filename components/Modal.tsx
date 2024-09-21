@@ -1,6 +1,4 @@
-// components/Modal.tsx
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import Image from 'next/image';
 import { X } from 'lucide-react';
@@ -16,8 +14,17 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Sluit de modal bij het indrukken van de Escape-toets
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -34,14 +41,12 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => 
     };
   }, [isOpen, onClose]);
 
-  // Focus op de sluitknop wanneer de modal opent
   useEffect(() => {
     if (isOpen && closeButtonRef.current) {
       closeButtonRef.current.focus();
     }
   }, [isOpen]);
 
-  // Voorkom achtergrond scrollen wanneer modal open is
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -60,7 +65,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => 
       focusTrapOptions={{
         onDeactivate: onClose,
         clickOutsideDeactivates: true,
-        // Gebruik de non-null assertion operator en type assertions
         initialFocus: () => closeButtonRef.current!,
         fallbackFocus: () => modalRef.current!,
       }}
@@ -76,30 +80,27 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => 
           className="bg-white rounded-lg p-6 max-w-4xl w-full relative"
           ref={modalRef}
         >
-          {/* Sluitknop */}
           <button
             onClick={onClose}
             ref={closeButtonRef}
-            className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 focus:outline-none"
+            className="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400 transition-colors duration-200"
             aria-label="Sluit modal"
             autoFocus
           >
             <X className="w-6 h-6" />
           </button>
-
-          {/* Afbeelding */}
-          <div className="w-full flex justify-center">
+          <div className="w-full flex justify-center overflow-auto max-h-[80vh]">
             <Image
               src={imageSrc}
               alt={caption}
               width={1200}
               height={630}
-              className="rounded-lg max-w-full h-auto object-contain"
+              className={`rounded-lg max-w-full h-auto object-contain ${
+                isMobile ? 'hover:scale-105' : 'hover:scale-110'
+              } transition-transform duration-200`}
               loading="lazy"
             />
           </div>
-
-          {/* Caption */}
           <p className="mt-4 text-center text-gray-700" id="modal-description">
             {caption}
           </p>

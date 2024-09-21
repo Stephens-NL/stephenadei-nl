@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.4",
     "@sentry/nextjs": "^8.30.0",
     "focus-trap-react": "^10.2.3",
     "i18next": "^23.15.1",
@@ -18,6 +19,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.2",
+    "react-pdf": "^9.1.1",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {

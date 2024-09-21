@@ -1,95 +1,36 @@
-// components/BentoGrid.tsx
-
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import Modal from './Modal'; // Zorg ervoor dat het pad correct is
-import { BookOpen, ChevronDown, ChevronUp, Code, Database } from 'lucide-react';
+import { BookOpen, Code, Database } from 'lucide-react';
+import { Document, Page } from 'react-pdf';
+import { pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-// Accordion Component for collapsible sections
-const Accordion: React.FC<{ title: string; content: string }> = ({
-  title,
-  content,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
-  return (
-    <div className="border-b border-gray-700">
-      <button
-        className="w-full flex justify-between items-center py-4 text-left text-emerald-100 font-semibold focus:outline-none"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span>{title}</span>
-        {isOpen ? (
-          <ChevronUp className="w-6 h-6" />
-        ) : (
-          <ChevronDown className="w-6 h-6" />
-        )}
-      </button>
-      {isOpen && (
-        <div className="pb-4 text-emerald-200">
-          <p>{content}</p>
-        </div>
-      )}
-    </div>
-  );
-};
+import Accordion from './Accordion';
+import ExpertiseSection from './ExpertiseSection';
 
-// Expertise Section for more detailed information
-const ExpertiseSection: React.FC = () => {
+const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => void }> = ({ openModal }) => {
   const { t } = useTranslation('common');
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [expandedWork, setExpandedWork] = useState<number | null>(null);
+  const [numPages, setNumPages] = useState<number | null>(null);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
+    setNumPages(numPages);
+  }
 
   return (
-    <div className="p-6 bg-emerald-800 rounded-lg shadow-lg mb-6">
-      <h3 className="text-2xl font-bold mb-4 text-emerald-100">
-        {t('expertise')}
-      </h3>
-      <p className="text-lg text-emerald-200">{t('expertiseSummary')}</p>
-      <button
-        className="mt-4 text-emerald-300 hover:underline"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? t('showLess') : t('showMore')}
-      </button>
-      {isExpanded && (
-        <div className="mt-4 text-emerald-100">
-          <ul className="list-disc list-inside">
-            <li>{t('advancedEducation')}</li>
-            <li>{t('diverseKnowledge')}</li>
-            <li>{t('researchAppliedMath')}</li>
-            <li>{t('programmingSkills')}</li>
-            <li>{t('problemSolving')}</li>
-            <li>{t('continuousLearning')}</li>
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const BentoGrid: React.FC = () => {
-  const { t } = useTranslation('common');
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImage, setModalImage] = useState('');
-  const [modalCaption, setModalCaption] = useState('');
-
-  const openModal = (imageSrc: string, caption: string) => {
-    setModalImage(imageSrc);
-    setModalCaption(caption);
-    setModalOpen(true);
-  };
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-emerald-900 rounded-lg shadow-lg">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-stone-800 rounded-lg shadow-xl">
       {/* Main introduction with outdoor image */}
-      <div className="md:col-span-2 bg-emerald-700 p-6 rounded-lg overflow-hidden">
-        <h3 className="text-2xl font-bold mb-4">{t('aboutIntro')}</h3>
-        <p className="text-lg mb-4">{t('aboutContent')}</p>
+      <div className="md:col-span-2 bg-stone-700 p-6 rounded-lg shadow-lg overflow-hidden">
+        <h3 className="text-2xl font-bold mb-4 text-stone-100">{t('about.intro')}</h3>
+        <p className="text-lg mb-4 text-stone-200">{t('about.content')}</p>
         <div
           className="relative h-64 md:h-96 rounded-lg overflow-hidden cursor-pointer"
           onClick={() =>
-            openModal('/images/portraits/outdoor.jpg', t('outdoorPhotoCaption'))
+            openModal('/images/portraits/outdoor.jpg', t('photos.outdoor.caption'))
           }
         >
           <Image
@@ -103,11 +44,11 @@ const BentoGrid: React.FC = () => {
       </div>
 
       {/* Teaching photo */}
-      <div className="bg-emerald-600 p-4 rounded-lg overflow-hidden">
+      <div className="bg-stone-600 p-4 rounded-lg shadow-lg overflow-hidden">
         <div
           className="relative h-48 md:h-64 rounded-lg overflow-hidden mb-4 cursor-pointer"
           onClick={() =>
-            openModal('/images/teaching/teaching.jpg', t('teachingPhotoCaption'))
+            openModal('/images/teaching/teaching.jpg', t('photos.teaching.caption'))
           }
         >
           <Image
@@ -118,24 +59,24 @@ const BentoGrid: React.FC = () => {
             className="rounded-lg transform transition-transform duration-300 hover:scale-105"
           />
         </div>
-        <h3 className="text-xl font-bold mb-2">{t('teachingPhotoCaption')}</h3>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('photos.teaching.caption')}</h3>
       </div>
 
       {/* Educational background */}
-      <div className="bg-teal-600 p-4 rounded-lg">
-        <h3 className="text-xl font-bold mb-2">{t('education')}</h3>
-        <p>{t('educationContent')}</p>
+      <div className="bg-stone-700 p-4 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.education.title')}</h3>
+        <p className="text-stone-200">{t('about.sections.education.content')}</p>
       </div>
 
       {/* Tutoring experience */}
-      <div className="bg-green-600 p-4 rounded-lg">
-        <h3 className="text-xl font-bold mb-2">{t('tutoringExperience')}</h3>
-        <p>{t('tutoringContent')}</p>
+      <div className="bg-stone-600 p-4 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.tutoring.title')}</h3>
+        <p className="text-stone-200">{t('about.sections.tutoring.content')}</p>
       </div>
 
       {/* Photography */}
-      <div className="md:col-span-2 bg-emerald-600 p-4 rounded-lg">
-        <h3 className="text-xl font-bold mb-2">{t('photography')}</h3>
+      <div className="md:col-span-2 bg-stone-700 p-4 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('services.photography.title')}</h3>
         <div className="grid grid-cols-3 gap-2">
           {['photo1.jpg', 'photo2.jpg', 'photo3.jpg'].map((photo, index) => (
             <div
@@ -144,7 +85,7 @@ const BentoGrid: React.FC = () => {
               onClick={() =>
                 openModal(
                   `/images/photography/${photo}`,
-                  `${t('photography')} ${index + 1}`
+                  `${t('services.photography.title')} ${index + 1}`
                 )
               }
             >
@@ -161,43 +102,76 @@ const BentoGrid: React.FC = () => {
       </div>
 
       {/* Tech stack */}
-      <div className="md:col-span-3 bg-teal-600 p-4 rounded-lg">
-        <h3 className="text-xl font-bold mb-2">{t('techStack')}</h3>
+      <div className="md:col-span-3 bg-stone-600 p-4 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.techStack.title')}</h3>
         <div className="flex space-x-4 mb-2">
-          <Code className="w-6 h-6" />
-          <BookOpen className="w-6 h-6" />
-          <Database className="w-6 h-6" />
+          <Code className="w-6 h-6 text-stone-300" />
+          <BookOpen className="w-6 h-6 text-stone-300" />
+          <Database className="w-6 h-6 text-stone-300" />
         </div>
-        <p>{t('techStackContent')}</p>
+        <p className="text-stone-200">{t('about.sections.techStack.content')}</p>
       </div>
 
       {/* Accordion Sections */}
-      <div className="md:col-span-3 bg-emerald-600 p-4 rounded-lg">
-        <h3 className="text-xl font-bold mb-2">{t('additionalInfo')}</h3>
+      <div className="md:col-span-3 bg-stone-700 p-4 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('general.additionalInfo')}</h3>
         <Accordion
-          title={t('aboutTeachingTitle')}
-          content={t('aboutTeachingContent')}
+          title={t('about.sections.teaching.title')}
+          content={t('about.sections.teaching.content')}
         />
         <Accordion
-          title={t('aboutLanguagesTitle')}
-          content={t('aboutLanguagesContent')}
+          title={t('about.sections.languages.title')}
+          content={t('about.sections.languages.content')}
         />
         <Accordion
-          title={t('aboutInterestsTitle')}
-          content={t('aboutInterestsContent')}
+          title={t('about.sections.interests.title')}
+          content={t('about.sections.interests.content')}
         />
+      </div>
+
+      {/* Academic Works Section */}
+      <div className="md:col-span-3 bg-stone-700 p-6 rounded-lg shadow-lg">
+        <h3 className="text-2xl font-bold mb-4 text-stone-100">{t('about.sections.academicWorks.title')}</h3>
+        <p className="mb-6 text-stone-200">{t('about.sections.academicWorks.content')}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {t('about.sections.academicWorks.works', { returnObjects: true }).map((work, index) => (
+            <div key={index} className="bg-stone-800 p-4 rounded-lg shadow transition-all duration-300 hover:shadow-lg">
+              <h4 className="text-lg font-semibold mb-2 text-stone-100">{work.title}</h4>
+              <p className="text-sm mb-2 text-stone-300">{work.type}</p>
+              <p className="text-sm mb-4 text-stone-200">{work.description}</p>
+              <button 
+                onClick={() => setExpandedWork(expandedWork === index ? null : index)}
+                className="text-stone-300 hover:text-stone-100 transition-colors duration-300"
+              >
+                {expandedWork === index ? 'Hide Cover' : 'Show Cover'}
+              </button>
+              {expandedWork === index && (
+                <div className="mt-4">
+                  <Document
+                    file={`/academic-works/${work.file}`}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    loading={<p className="text-stone-300">Loading cover...</p>}
+                    error={<p className="text-red-500">Error loading PDF. Please try again.</p>}
+                  >
+                    <Page 
+                      pageNumber={1} 
+                      width={300}
+                      renderTextLayer={false}
+                      renderAnnotationLayer={false}
+                    />
+                  </Document>
+                  {numPages && (
+                    <p className="text-stone-400 text-sm mt-2">Page 1 of {numPages}</p>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Expertise Section */}
       <ExpertiseSection />
-
-      {/* Modal Component */}
-      <Modal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        imageSrc={modalImage}
-        caption={modalCaption}
-      />
     </div>
   );
 };
