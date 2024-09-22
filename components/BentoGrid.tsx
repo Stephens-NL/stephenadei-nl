@@ -1,18 +1,7 @@
-// components/BentoGrid.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
-import { BookOpen, Code, Database } from 'lucide-react';
-import dynamic from 'next/dynamic';
-import { pdfjs } from 'react-pdf';
-import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
-import 'react-pdf/dist/esm/Page/TextLayer.css';
-
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
-// Dynamisch importeren van react-pdf componenten
-const Document = dynamic(() => import('react-pdf').then(mod => mod.Document), { ssr: false });
-const Page = dynamic(() => import('react-pdf').then(mod => mod.Page), { ssr: false });
+import { BookOpen, Code, Database, Download } from 'lucide-react';
 
 import Accordion from './Accordion';
 import ExpertiseSection from './ExpertiseSection';
@@ -21,14 +10,15 @@ interface BentoGridProps {
   openModal: (imageSrc: string, caption: string) => void;
 }
 
+interface AcademicWork {
+  title: string;
+  type: string;
+  description: string;
+  file: string;
+}
+
 const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
   const { t } = useTranslation('common');
-  const [expandedWork, setExpandedWork] = useState<number | null>(null);
-  const [numPages, setNumPages] = useState<{ [key: number]: number }>({});
-
-  function onDocumentLoadSuccess(index: number, { numPages }: { numPages: number }) {
-    setNumPages(prev => ({ ...prev, [index]: numPages }));
-  }
 
   const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
     const image = event.currentTarget;
@@ -39,8 +29,12 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
     }
   };
 
-  const academicWorks = t('about.sections.academicWorks.works', { returnObjects: true });
-  console.log('Academic Works:', academicWorks);
+  const about = t('about', { returnObjects: true });
+  const services = t('services', { returnObjects: true });
+  const photos = t('photos', { returnObjects: true });
+  const general = t('general', { returnObjects: true });
+
+  const academicWorks = about.sections.academicWorks.works as AcademicWork[];
 
   if (!Array.isArray(academicWorks)) {
     console.error('Academic Works is not an array:', academicWorks);
@@ -51,13 +45,11 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-stone-800 rounded-lg shadow-xl">
       {/* Main introduction with outdoor image */}
       <div className="md:col-span-2 bg-stone-700 p-6 rounded-lg shadow-lg overflow-hidden">
-        <h3 className="text-2xl font-bold mb-4 text-stone-100">{t('about.intro')}</h3>
-        <p className="text-lg mb-4 text-stone-200">{t('about.content')}</p>
+        <h3 className="text-2xl font-bold mb-4 text-stone-100">{about.intro}</h3>
+        <p className="text-lg mb-4 text-stone-200">{about.content}</p>
         <div
           className="relative h-64 md:h-96 rounded-lg overflow-hidden cursor-pointer"
-          onClick={() =>
-            openModal('/images/portraits/outdoor.jpg', t('photos.outdoor.caption'))
-          }
+          onClick={() => openModal('/images/portraits/outdoor.jpg', photos.outdoor.caption)}
         >
           <Image
             src="/images/portraits/outdoor.jpg"
@@ -75,9 +67,7 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
       <div className="bg-stone-600 p-4 rounded-lg shadow-lg overflow-hidden">
         <div
           className="relative h-48 md:h-64 rounded-lg overflow-hidden mb-4 cursor-pointer"
-          onClick={() =>
-            openModal('/images/teaching/teaching.jpg', t('photos.teaching.caption'))
-          }
+          onClick={() => openModal('/images/teaching/teaching.jpg', photos.teaching.caption)}
         >
           <Image
             src="/images/teaching/teaching.jpg"
@@ -89,35 +79,30 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
             onLoad={handleImageLoad}
           />
         </div>
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('photos.teaching.caption')}</h3>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{photos.teaching.caption}</h3>
       </div>
 
       {/* Educational background */}
       <div className="bg-stone-700 p-4 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.education.title')}</h3>
-        <p className="text-stone-200">{t('about.sections.education.content')}</p>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{about.sections.education.title}</h3>
+        <p className="text-stone-200">{about.sections.education.content}</p>
       </div>
 
       {/* Tutoring experience */}
       <div className="bg-stone-600 p-4 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.tutoring.title')}</h3>
-        <p className="text-stone-200">{t('about.sections.tutoring.content')}</p>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{about.sections.tutoring.title}</h3>
+        <p className="text-stone-200">{about.sections.tutoring.content}</p>
       </div>
 
       {/* Photography */}
       <div className="md:col-span-2 bg-stone-700 p-4 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('services.photography.title')}</h3>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{services.photography.title}</h3>
         <div className="grid grid-cols-3 gap-2">
           {['photo1.jpg', 'photo2.jpg', 'photo3.jpg'].map((photo, index) => (
             <div
               key={index}
               className="relative h-32 rounded-lg overflow-hidden cursor-pointer"
-              onClick={() =>
-                openModal(
-                  `/images/photography/${photo}`,
-                  `${t('services.photography.title')} ${index + 1}`
-                )
-              }
+              onClick={() => openModal(`/images/photography/${photo}`, `${services.photography.title} ${index + 1}`)}
             >
               <Image
                 src={`/images/photography/${photo}`}
@@ -135,76 +120,59 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
 
       {/* Tech stack */}
       <div className="md:col-span-3 bg-stone-600 p-4 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('about.sections.techStack.title')}</h3>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{about.sections.techStack.title}</h3>
         <div className="flex space-x-4 mb-2">
           <Code className="w-6 h-6 text-stone-300" />
           <BookOpen className="w-6 h-6 text-stone-300" />
           <Database className="w-6 h-6 text-stone-300" />
         </div>
-        <p className="text-stone-200">{t('about.sections.techStack.content')}</p>
+        <p className="text-stone-200">{about.sections.techStack.content}</p>
       </div>
 
       {/* Accordion Sections */}
       <div className="md:col-span-3 bg-stone-700 p-4 rounded-lg shadow-lg">
-        <h3 className="text-xl font-bold mb-2 text-stone-100">{t('general.additionalInfo')}</h3>
+        <h3 className="text-xl font-bold mb-2 text-stone-100">{general.additionalInfo}</h3>
         <Accordion
-          title={t('about.sections.teaching.title')}
-          content={t('about.sections.teaching.content')}
+          title={about.sections.teaching.title}
+          content={about.sections.teaching.content}
         />
         <Accordion
-          title={t('about.sections.languages.title')}
-          content={t('about.sections.languages.content')}
+          title={about.sections.languages.title}
+          content={about.sections.languages.content}
         />
         <Accordion
-          title={t('about.sections.interests.title')}
-          content={t('about.sections.interests.content')}
+          title={about.sections.interests.title}
+          content={about.sections.interests.content}
         />
       </div>
 
+      <ExpertiseSection />
+
+
       {/* Academic Works Section */}
       <div className="md:col-span-3 bg-stone-700 p-6 rounded-lg shadow-lg">
-        <h3 className="text-2xl font-bold mb-4 text-stone-100">{t('about.sections.academicWorks.title')}</h3>
-        <p className="mb-6 text-stone-200">{t('about.sections.academicWorks.content')}</p>
+        <h3 className="text-2xl font-bold mb-4 text-stone-100">{about.sections.academicWorks.title}</h3>
+        <p className="mb-6 text-stone-200">{about.sections.academicWorks.content}</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {academicWorks.map((work: any, index: number) => (
+          {academicWorks.map((work: AcademicWork, index: number) => (
             <div key={index} className="bg-stone-800 p-4 rounded-lg shadow transition-all duration-300 hover:shadow-lg">
               <h4 className="text-lg font-semibold mb-2 text-stone-100">{work.title}</h4>
               <p className="text-sm mb-2 text-stone-300">{work.type}</p>
               <p className="text-sm mb-4 text-stone-200">{work.description}</p>
-              <button 
-                onClick={() => setExpandedWork(expandedWork === index ? null : index)}
-                className="text-stone-300 hover:text-stone-100 transition-colors duration-300"
+              <a 
+                href={`/academic-works/${work.file}`} 
+                download
+                className="inline-flex items-center text-stone-300 hover:text-stone-100 transition-colors duration-300"
               >
-                {expandedWork === index ? 'Hide Cover' : 'Show Cover'}
-              </button>
-              {expandedWork === index && (
-                <div className="mt-4">
-                  <Document
-                    file={`/academic-works/${work.file}`}
-                    onLoadSuccess={(data) => onDocumentLoadSuccess(index, data)}
-                    onLoadError={(error) => console.error(`Error loading PDF for work ${index}:`, error)}
-                    loading={<p className="text-stone-300">Loading cover...</p>}
-                    error={<p className="text-red-500">Error loading PDF. Please try again.</p>}
-                  >
-                    <Page 
-                      pageNumber={1} 
-                      width={300}
-                      renderTextLayer={false}
-                      renderAnnotationLayer={false}
-                    />
-                  </Document>
-                  {numPages[index] && (
-                    <p className="text-stone-400 text-sm mt-2">Page 1 of {numPages[index]}</p>
-                  )}
-                </div>
-              )}
+                <Download className="w-4 h-4 mr-2" />
+                Download PDF
+              </a>
             </div>
           ))}
         </div>
       </div>
 
       {/* Expertise Section */}
-      <ExpertiseSection />
     </div>
   );
 };

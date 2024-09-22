@@ -103,24 +103,50 @@
     "title": "Expertise",
     "summary": "A summary of my expertise in various fields.",
     "items": {
-      "advancedEducation": "Advanced Education",
+      "advancedEducation": {
+        "title": "Advanced Education",
+        "details": "I hold a Master's degree in Mathematics, with specializations in quantum informatics, dynamic systems, and data science. My academic background includes a strong focus on advanced mathematical concepts such as quantum mechanics, linear algebra, and chaos theory, as well as practical applications in real-world scenarios."
+      },
       "diverseKnowledge": {
         "title": "Diverse Mathematical Knowledge",
-        "details": "Extensive knowledge in various mathematical fields, including quantum computing, complex analysis, and mathematical modeling."
+        "details": "My expertise spans various mathematical fields, including quantum informatics, complex analysis, differential equations, and mathematical modeling. My research projects, such as those on entanglement-assisted zero-error communication, demonstrate my ability to apply advanced mathematical theories to solve complex problems."
       },
-      "problemSolving": {
-        "title": "Problem-Solving Skills",
-        "details": "Strong analytical skills, demonstrated in both academic and real-world settings."
+      "teachingProficiency": {
+        "title": "Teaching Proficiency",
+        "details": "With over 15 years of experience in teaching mathematics and data science, I have developed a deep understanding of pedagogy. My teaching certification qualifies me to teach mathematics at all levels, from high school to university, allowing me to make difficult concepts accessible to students of all ages and abilities."
+      },
+      "researchExperience": {
+        "title": "Research Experience",
+        "details": "I have collaborated on key research projects, such as an archive documenting the founders of computer science in the Netherlands, in collaboration with Professor Gerard Albert. These projects have deepened my understanding of the historical and foundational aspects of mathematics and computer science."
+      },
+      "appliedMathematics": {
+        "title": "Applied Mathematics",
+        "details": "My work in data consultancy involves applying mathematical concepts to solve practical problems. From statistical analysis and machine learning to data modeling, I bring a robust mathematical approach to real-world applications, ensuring precise and effective results."
+      },
+      "interdisciplinaryApproach": {
+        "title": "Interdisciplinary Approach",
+        "details": "In addition to mathematics, I am passionate about data science, music, and photography. This interdisciplinary mindset enhances my problem-solving skills, allowing me to approach mathematical challenges from unique perspectives, whether through visual data analysis or algorithmic music composition."
       },
       "programmingSkills": {
         "title": "Programming Skills",
-        "details": "Proficient in Python, JavaScript, Next.js, and machine learning for advanced data consultancy and AI integration."
+        "details": "I am proficient in various programming languages, including Python, JavaScript, and frameworks like Next.js. I have integrated AI into my educational tools, automating tasks such as note-taking and summaries, and I regularly apply machine learning techniques to optimize data-driven projects."
+      },
+      "mathematicalCommunication": {
+        "title": "Mathematical Communication",
+        "details": "Fluent in English and Dutch, I am adept at communicating complex mathematical ideas across linguistic and cultural barriers. My experience teaching in diverse educational settings has refined my ability to simplify intricate concepts and convey them clearly to both academic and non-academic audiences."
+      },
+      "problemSolving": {
+        "title": "Problem-Solving Skills",
+        "details": "Throughout my academic and professional journey, I have honed my analytical and problem-solving skills. Whether it's solving complex mathematical equations, troubleshooting data models, or developing innovative software solutions, I thrive on tackling challenging problems with a logical and methodical approach."
       },
       "lifelongLearner": {
         "title": "Lifelong Learner",
-        "details": "Committed to continuous education and staying updated with the latest developments in mathematics and technology."
+        "details": "I am deeply committed to continuous learning, always staying updated on the latest advancements in mathematics, technology, and related fields. This dedication to self-improvement ensures that my skills remain sharp and that I can offer the most cutting-edge solutions in both teaching and consulting."
       },
-      "researchAppliedMath": "Research and Applied Mathematics"
+      "researchAppliedMath": {
+        "title": "Research and Applied Mathematics",
+        "details": "My research covers various aspects of applied mathematics, including stability analysis of systems, zero-error communication in quantum channels, and data science techniques. These projects demonstrate my ability to bridge the gap between theory and application, making significant contributions to both academic and industrial fields."
+      }
     }
   },
   "photos": {

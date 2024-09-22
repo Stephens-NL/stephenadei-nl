@@ -13,7 +13,6 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -22,23 +21,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => 
   }, []);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  useEffect(() => {
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
       }
     };
+
     if (isOpen) {
       window.addEventListener('keydown', handleEsc);
     }
+
     return () => {
       window.removeEventListener('keydown', handleEsc);
     };
@@ -108,7 +100,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, caption }) => 
       </div>
     </div>
   );
-  
 
   return ReactDOM.createPortal(modalContent, document.body);
 };

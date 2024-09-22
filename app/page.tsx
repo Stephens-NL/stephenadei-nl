@@ -3,25 +3,22 @@
 import React, { useRef, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
-import {
-  GraduationCap,
-  Camera,
-  Database,
-  Music,
-} from 'lucide-react';
+import { GraduationCap, Camera, Database, Music } from 'lucide-react';
 import Link from 'next/link';
 import BentoGrid from '@/components/BentoGrid';
 import Modal from '@/components/Modal';
 import FlagButton from '@/components/FlagButton';
-import i18n from '../i18n'; // Adjust the path if needed
+import i18n from '../i18n';
 
+type ServiceKey = 'privateTutoring' | 'dataConsultancy' | 'photography' | 'music';
 
 interface ServiceCard {
-  key: 'privateTutoring' | 'dataConsultancy' | 'photography' | 'music';
+  key: ServiceKey;
   icon: React.ReactElement;
   url: string;
   isLive: boolean;
 }
+
 
 const serviceCards: ServiceCard[] = [
   {
@@ -127,20 +124,21 @@ const Home: React.FC = () => {
   const [modalImage, setModalImage] = useState('');
   const [modalCaption, setModalCaption] = useState('');
 
-  // useEffect voor scroll handling blijft ongewijzigd
-
   const toggleLanguage = () => {
     i18n.changeLanguage(currentLang === 'en' ? 'nl' : 'en');
   };
 
   const buttonOpacity = Math.max(1 - scrollPosition / 500, 0.5);
 
-  // Function to open modal
   const openModal = (imageSrc: string, caption: string) => {
     setModalImage(imageSrc);
     setModalCaption(caption);
     setModalOpen(true);
   };
+
+  const general = t('general', { returnObjects: true });
+  const servicesTranslations = t('services', { returnObjects: true });
+  const about = t('about', { returnObjects: true });
 
   return (
     <div className="relative min-h-screen bg-emerald-900 text-white font-sans overflow-hidden">
@@ -168,59 +166,49 @@ const Home: React.FC = () => {
         </span>
       </div>
 
-      {/* Main Content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-20">
         <div className="text-center max-w-6xl mx-auto">
-          {/* Header */}
           <h1 className="text-7xl sm:text-8xl font-black mb-8 tracking-tighter">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-green-500 to-teal-600">
-              {t('general.name')}
+              {general.name}
             </span>
             <span className="block text-5xl sm:text-6xl mt-4 text-emerald-100">
-              {t('services.title')}
+              {servicesTranslations.title}
             </span>
           </h1>
           <p className="text-2xl mb-16 text-emerald-100 max-w-3xl mx-auto leading-relaxed select-none">
-            {t('general.intro')}
+            {general.intro}
           </p>
 
-          {/* Service Cards */}
           <div className="grid grid-cols-1 gap-8 mb-16">
-            {/* Private Tutoring Card (full width) */}
             <TiltCard className="col-span-1 group">
-              <div
-                className={`rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between bg-emerald-800 bg-opacity-70 hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-900 cursor-pointer select-none group`}
-              >
+              <div className="rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between bg-emerald-800 bg-opacity-70 hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-900 cursor-pointer select-none group">
                 <div className="flex items-center mb-4">
                   <div className="p-3 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 mr-4 transition-colors duration-300 group-hover:text-yellow-400">
                     {services[0].icon}
                   </div>
                   <h2 className="text-3xl font-semibold text-emerald-100">
-                    {t('services.privateTutoring.title')}
+                    {servicesTranslations.privateTutoring.title}
                   </h2>
                 </div>
                 <p className="text-xl text-emerald-100 mb-4">
-                  {t('services.privateTutoring.description')}
+                  {servicesTranslations.privateTutoring.description}
                 </p>
                 <Link href={services[0].url} passHref>
-                  <span
-                    className="inline-block mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 cursor-pointer"
-                  >
-                    {t('services.privateTutoring.cta')}
+                  <span className="inline-block mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300 cursor-pointer">
+                    {servicesTranslations.privateTutoring.cta}
                   </span>
                 </Link>
               </div>
             </TiltCard>
 
-            {/* Andere Service Cards */}
+            {/* Other Service Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {services.slice(1).map((card) => (
                 <TiltCard key={card.key} className="block">
-                  <div
-                    className={`rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between bg-emerald-800 bg-opacity-70 ${
-                      card.isLive ? 'hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-900 cursor-pointer' : 'cursor-default'
-                    } transition-colors duration-300 group select-none`}
-                  >
+                  <div className={`rounded-lg p-6 shadow-lg backdrop-blur-sm h-full flex flex-col justify-between bg-emerald-800 bg-opacity-70 ${
+                    card.isLive ? 'hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-900 cursor-pointer' : 'cursor-default'
+                  } transition-colors duration-300 group select-none`}>
                     {card.isLive ? (
                       <Link href={card.url} passHref>
                         <div className="cursor-pointer">
@@ -230,13 +218,13 @@ const Home: React.FC = () => {
                             </div>
                           </div>
                           <h2 className="text-3xl font-semibold mb-4 text-emerald-100">
-                            {t(`services.${card.key}.title`)}
+                            {servicesTranslations[card.key].title}
                           </h2>
                           <p className="text-xl text-emerald-100 mb-4">
-                            {t(`services.${card.key}.description`)}
+                            {servicesTranslations[card.key].description}
                           </p>
                           <span className="inline-block mt-4 px-6 py-2 bg-emerald-600 text-white rounded-full hover:bg-yellow-400 hover:text-blue-900 transition-colors duration-300">
-                            {t(`services.${card.key}.cta`)}
+                            {servicesTranslations[card.key].cta}
                           </span>
                         </div>
                       </Link>
@@ -248,13 +236,13 @@ const Home: React.FC = () => {
                           </div>
                         </div>
                         <h2 className="text-3xl font-semibold mb-4 text-emerald-100">
-                          {t(`services.${card.key}.title`)}
+                          {servicesTranslations[card.key].title}
                         </h2>
                         <p className="text-xl text-emerald-100 mb-4">
-                          {t(`services.${card.key}.description`)}
+                          {servicesTranslations[card.key].description}
                         </p>
                         <p className="text-lg text-gray-400 mt-auto">
-                          {t('general.comingSoon')}
+                          {general.comingSoon}
                         </p>
                       </div>
                     )}
@@ -267,7 +255,7 @@ const Home: React.FC = () => {
           {/* About Section */}
           <div className="mt-16">
             <h2 className="text-4xl font-semibold mb-6 text-emerald-100">
-              {t('about.title')}
+              {about.title}
             </h2>
             <BentoGrid openModal={openModal} />
           </div>
