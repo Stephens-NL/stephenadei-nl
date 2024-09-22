@@ -1,24 +1,50 @@
+// components/BentoGrid.tsx
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { BookOpen, Code, Database } from 'lucide-react';
-import { Document, Page } from 'react-pdf';
+import dynamic from 'next/dynamic';
 import { pdfjs } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+// Dynamisch importeren van react-pdf componenten
+const Document = dynamic(() => import('react-pdf').then(mod => mod.Document), { ssr: false });
+const Page = dynamic(() => import('react-pdf').then(mod => mod.Page), { ssr: false });
 
 import Accordion from './Accordion';
 import ExpertiseSection from './ExpertiseSection';
 
-const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => void }> = ({ openModal }) => {
+interface BentoGridProps {
+  openModal: (imageSrc: string, caption: string) => void;
+}
+
+const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
   const { t } = useTranslation('common');
   const [expandedWork, setExpandedWork] = useState<number | null>(null);
-  const [numPages, setNumPages] = useState<number | null>(null);
+  const [numPages, setNumPages] = useState<{ [key: number]: number }>({});
 
-  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
-    setNumPages(numPages);
+  function onDocumentLoadSuccess(index: number, { numPages }: { numPages: number }) {
+    setNumPages(prev => ({ ...prev, [index]: numPages }));
+  }
+
+  const handleImageLoad = (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const image = event.currentTarget;
+    if (image.naturalWidth > image.naturalHeight) {
+      image.classList.add('landscape');
+    } else {
+      image.classList.add('portrait');
+    }
+  };
+
+  const academicWorks = t('about.sections.academicWorks.works', { returnObjects: true });
+  console.log('Academic Works:', academicWorks);
+
+  if (!Array.isArray(academicWorks)) {
+    console.error('Academic Works is not an array:', academicWorks);
+    return null; // Of geef een fallback UI weer
   }
 
   return (
@@ -37,8 +63,10 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
             src="/images/portraits/outdoor.jpg"
             alt="Stephen Adei outdoor"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             style={{ objectFit: 'cover' }}
             className="rounded-lg transform transition-transform duration-300 hover:scale-105"
+            onLoad={handleImageLoad}
           />
         </div>
       </div>
@@ -55,8 +83,10 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
             src="/images/teaching/teaching.jpg"
             alt="Stephen teaching"
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             style={{ objectFit: 'cover' }}
             className="rounded-lg transform transition-transform duration-300 hover:scale-105"
+            onLoad={handleImageLoad}
           />
         </div>
         <h3 className="text-xl font-bold mb-2 text-stone-100">{t('photos.teaching.caption')}</h3>
@@ -93,8 +123,10 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
                 src={`/images/photography/${photo}`}
                 alt={`Portrait ${index + 1}`}
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ objectFit: 'cover' }}
                 className="rounded-lg transform transition-transform duration-300 hover:scale-105"
+                onLoad={handleImageLoad}
               />
             </div>
           ))}
@@ -134,7 +166,7 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
         <h3 className="text-2xl font-bold mb-4 text-stone-100">{t('about.sections.academicWorks.title')}</h3>
         <p className="mb-6 text-stone-200">{t('about.sections.academicWorks.content')}</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {t('about.sections.academicWorks.works', { returnObjects: true }).map((work, index) => (
+          {academicWorks.map((work: any, index: number) => (
             <div key={index} className="bg-stone-800 p-4 rounded-lg shadow transition-all duration-300 hover:shadow-lg">
               <h4 className="text-lg font-semibold mb-2 text-stone-100">{work.title}</h4>
               <p className="text-sm mb-2 text-stone-300">{work.type}</p>
@@ -149,7 +181,8 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
                 <div className="mt-4">
                   <Document
                     file={`/academic-works/${work.file}`}
-                    onLoadSuccess={onDocumentLoadSuccess}
+                    onLoadSuccess={(data) => onDocumentLoadSuccess(index, data)}
+                    onLoadError={(error) => console.error(`Error loading PDF for work ${index}:`, error)}
                     loading={<p className="text-stone-300">Loading cover...</p>}
                     error={<p className="text-red-500">Error loading PDF. Please try again.</p>}
                   >
@@ -160,8 +193,8 @@ const BentoGrid: React.FC<{ openModal: (imageSrc: string, caption: string) => vo
                       renderAnnotationLayer={false}
                     />
                   </Document>
-                  {numPages && (
-                    <p className="text-stone-400 text-sm mt-2">Page 1 of {numPages}</p>
+                  {numPages[index] && (
+                    <p className="text-stone-400 text-sm mt-2">Page 1 of {numPages[index]}</p>
                   )}
                 </div>
               )}

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-// import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import {
   GraduationCap,
@@ -10,7 +10,6 @@ import {
   Music,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
 import BentoGrid from '@/components/BentoGrid';
 import Modal from '@/components/Modal';
 import FlagButton from '@/components/FlagButton';
