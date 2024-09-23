@@ -1,18 +1,20 @@
+// ExpertiseSection.tsx
+
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
-import { ExpertiseSectionData, ExpertiseItemData } from '../types/i18n'; // Pas dit pad aan
+import { ExpertiseSectionData, ExpertiseItemData } from '../types/i18n';
+import { FaChevronDown } from 'react-icons/fa';
 
 const ExpertiseSection: React.FC = () => {
   const { t } = useTranslation('common');
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [expertiseData, setExpertiseData] = useState<ExpertiseSectionData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     try {
       const expertise = t('expertise', { returnObjects: true }) as ExpertiseSectionData;
-      console.log('Raw expertise data:', JSON.stringify(expertise, null, 2));
-      
+
       if (!expertise || typeof expertise !== 'object') {
         throw new Error('Expertise data is not an object');
       }
@@ -29,11 +31,7 @@ const ExpertiseSection: React.FC = () => {
   }, [t]);
 
   const toggleItem = (itemKey: string) => {
-    setExpandedItems(prev =>
-      prev.includes(itemKey)
-        ? prev.filter(i => i !== itemKey)
-        : [...prev, itemKey]
-    );
+    setExpandedItem(prev => (prev === itemKey ? null : itemKey));
   };
 
   if (error) {
@@ -45,28 +43,42 @@ const ExpertiseSection: React.FC = () => {
   }
 
   return (
-    <div className="p-6 bg-stone-700 rounded-lg shadow-lg mb-6 transition-all duration-300 hover:shadow-xl">
-      <h2 className="text-3xl font-bold mb-4 text-stone-100">{expertiseData.title}</h2>
-      <p className="text-lg text-stone-200 mb-6">{expertiseData.summary}</p>
+    <div className="relative bg-white bg-opacity-20 p-6 rounded-lg shadow-lg">
+      <h2 className="text-3xl font-bold mb-4 text-white">{expertiseData.title}</h2>
+      <p className="text-lg text-white mb-6">{expertiseData.summary}</p>
 
       {Object.entries(expertiseData.items).map(([key, item]) => {
-        console.log(`Processing item: ${key}`, JSON.stringify(item, null, 2));
         const isItemObject = typeof item === 'object' && item !== null;
-        const title = isItemObject ? (item as ExpertiseItemData).title : item as string;
+        const title = isItemObject ? (item as ExpertiseItemData).title : (item as string);
         const details = isItemObject ? (item as ExpertiseItemData).details : null;
+        const isExpanded = expandedItem === key;
 
         return (
-          <div key={key} className="mb-6">
-            <h3
-              className="text-2xl font-semibold mb-3 text-stone-100 cursor-pointer hover:text-stone-300 transition-colors duration-300"
+          <div key={key} className="mb-4">
+            <button
               onClick={() => toggleItem(key)}
+              className="flex items-center justify-between w-full text-left text-xl font-semibold text-white focus:outline-none transition-colors duration-300 hover:text-gray-300"
+              aria-expanded={isExpanded}
             >
-              {title}
-              {details && <span className="ml-2">{expandedItems.includes(key) ? '▼' : '▶'}</span>}
-            </h3>
-            
-            {details && expandedItems.includes(key) && (
-              <p className="text-stone-200 ml-4">{details}</p>
+              <span>{title}</span>
+              {details && (
+                <span
+                  className={`ml-2 transform transition-transform duration-300 ${
+                    isExpanded ? 'rotate-180' : ''
+                  }`}
+                >
+                  <FaChevronDown />
+                </span>
+              )}
+            </button>
+            {details && (
+              <div
+                className={`mt-2 text-white text-base leading-relaxed overflow-hidden transition-all duration-300 ease-in-out ${
+                  isExpanded ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+                }`}
+              >
+                {details}
+              </div>
             )}
           </div>
         );

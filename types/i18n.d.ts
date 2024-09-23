@@ -1,13 +1,13 @@
 export interface ExpertiseItemData {
   title: string;
-  details: string;
+  details?: string;
 }
 
 export interface ExpertiseSectionData {
   title: string;
-  summary: string;
+  summary?: string;
   items: {
-    [key: string]: string | ExpertiseItemData;
+    [key: string]: ExpertiseItemData | string;
   };
 }
 

@@ -43,8 +43,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
 
   return (
     <div className="relative grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm rounded-lg shadow-xl overflow-hidden">
-      {/* Shimmering overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-shimmer"></div>
+      {/* Shimmering overlay with pointer-events-none */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-10 animate-shimmer pointer-events-none"></div>
 
       {/* Main introduction with outdoor image */}
       <div className="relative md:col-span-2 bg-white bg-opacity-20 p-6 rounded-lg shadow-lg overflow-hidden">
@@ -149,7 +149,9 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
         />
       </div>
 
-      <ExpertiseSection />
+      <div className="md:col-span-3">
+        <ExpertiseSection />
+      </div>
 
       {/* Academic Works Section */}
       <div className="relative md:col-span-3 bg-white bg-opacity-20 p-6 rounded-lg shadow-lg">
@@ -161,8 +163,8 @@ const BentoGrid: React.FC<BentoGridProps> = ({ openModal }) => {
               <h4 className="text-lg font-semibold mb-2 text-white">{work.title}</h4>
               <p className="text-sm mb-2 text-gray-200">{work.type}</p>
               <p className="text-sm mb-4 text-white">{work.description}</p>
-              <a 
-                href={`/academic-works/${work.file}`} 
+              <a
+                href={`/academic-works/${work.file}`}
                 download
                 className="inline-flex items-center text-gray-300 hover:text-white transition-colors duration-300"
               >
