@@ -1,160 +1,160 @@
 {
   "general": {
     "name": "STEPHEN ADEI",
-    "intro": "Discover our range of services, from personalized tutoring to professional photography and data consultancy.",
-    "comingSoon": "Coming Soon",
-    "readMore": "Read more",
-    "readLess": "Show less",
-    "showMore": "Show more",
-    "showLess": "Show less",
-    "goTo": "Go to",
-    "visitSite": "Visit Site",
-    "additionalInfo": "Additional Information"
+    "intro": "Ontdek ons aanbod van diensten, van gepersonaliseerde bijles tot professionele fotografie en dataconsultancy.",
+    "comingSoon": "Binnenkort beschikbaar",
+    "readMore": "Lees meer",
+    "readLess": "Toon minder",
+    "showMore": "Toon meer",
+    "showLess": "Toon minder",
+    "goTo": "Ga naar",
+    "visitSite": "Bezoek site",
+    "additionalInfo": "Aanvullende informatie"
   },
   "services": {
-    "title": "SERVICES",
+    "title": "DIENSTEN",
     "privateTutoring": {
-      "title": "Private Tutoring",
-      "description": "Exclusive one-on-one learning experiences tailored to your needs.",
-      "cta": "Start Learning"
+      "title": "Privé Bijles",
+      "description": "Exclusieve één-op-één leerervaringen afgestemd op jouw behoeften.",
+      "cta": "Begin met leren"
     },
     "dataConsultancy": {
-      "title": "Data Consultancy",
-      "description": "Unlock the power of your data with our expert consultancy services.",
-      "cta": "Explore Services"
+      "title": "Dataconsultancy",
+      "description": "Ontgrendel de kracht van uw gegevens met onze deskundige adviesdiensten.",
+      "cta": "Ontdek diensten"
     },
     "photography": {
-      "title": "Photography",
-      "description": "Capture your special moments with our professional photography services.",
-      "cta": "View Portfolio"
+      "title": "Fotografie",
+      "description": "Leg uw speciale momenten vast met onze professionele fotografiediensten.",
+      "cta": "Bekijk portfolio"
     },
     "music": {
-      "title": "Music",
-      "description": "Discover my musical creations and services.",
-      "cta": "Listen Now"
+      "title": "Muziek",
+      "description": "Ontdek mijn muzikale creaties en diensten.",
+      "cta": "Luister nu"
     }
   },
   "about": {
-    "title": "About Me",
-    "intro": "About Stephen Adei",
-    "content": "A passionate educator and lifelong learner with a deep love for mathematics and its applications. From tutoring to research, I bring creativity and innovation to every aspect of my work.",
+    "title": "Over Mij",
+    "intro": "Over Stephen Adei",
+    "content": "Een gepassioneerde opvoeder en levenslange leerling met een diepe liefde voor wiskunde en de toepassingen ervan. Van bijles tot onderzoek, ik breng creativiteit en innovatie in elk aspect van mijn werk.",
     "sections": {
-     "academicWorks": {
-        "title": "Academic Works",
-        "content": "Here are some of my key academic projects and theses:",
+      "academicWorks": {
+        "title": "Academische Werken",
+        "content": "Hier zijn enkele van mijn belangrijkste academische projecten en scripties:",
         "works": [
           {
-            "title": "Mathematical Epidemiology: From Data to Model",
-            "type": "Bachelor's End Project",
-            "description": "An exploration of simple epidemic models and their application to real-world data.",
+            "title": "Mathematische Epidemiologie: Van Data naar Model",
+            "type": "Bachelor Eindproject",
+            "description": "Een verkenning van eenvoudige epidemische modellen en hun toepassing op real-world data.",
             "file": "mathematical-epidemiology.pdf"
           },
           {
             "title": "Entanglement-assisted zero-error communication",
-            "type": "Master's Thesis",
-            "description": "Investigation of zero-error communication capacity of noisy classical channels using shared entanglement.",
+            "type": "Master's Scriptie",
+            "description": "Onderzoek naar de zero-error communicatiecapaciteit van ruisende klassieke kanalen met behulp van gedeelde verstrengeling.",
             "file": "entanglement-assisted-communication.pdf"
           },
           {
-            "title": "Stability of Enzymatic Reaction Chains",
-            "type": "Biomathematics Project",
-            "description": "Analysis of the stability of enzymatic reaction chains using mathematical modeling.",
+            "title": "Stabiliteit van Enzymatische Reactieketens",
+            "type": "Biomathematica Project",
+            "description": "Analyse van de stabiliteit van enzymatische reactieketens met behulp van wiskundige modellering.",
             "file": "stability-enzymatic-reaction-chains.pdf"
           }
         ]
       },
       "interests": {
-        "title": "Interests",
-        "content": "Besides mathematics, I have a strong interest in data science, photography, and music. These diverse passions inform my interdisciplinary approach to problem-solving and creativity in both my teaching and consultancy work.",
-        "list": "Music, Mathematics, Photography, Programming"
+        "title": "Interesses",
+        "content": "Naast wiskunde heb ik een sterke interesse in datawetenschap, fotografie en muziek. Deze diverse passies informeren mijn interdisciplinaire benadering van probleemoplossing en creativiteit in zowel mijn onderwijs als advieswerk.",
+        "list": "Muziek, Wiskunde, Fotografie, Programmeren"
       },
       "languages": {
-        "title": "Languages",
-        "content": "Fluent in English and Dutch, I can effectively communicate mathematical ideas across language barriers, making me well-suited for international educational environments.",
-        "list": "English (Native), Dutch (Native), Twi (Proficient)"
+        "title": "Talen",
+        "content": "Vloeiend in Engels en Nederlands, ik kan wiskundige ideeën effectief communiceren over taalbarrières heen, waardoor ik goed geschikt ben voor internationale onderwijsomgevingen.",
+        "list": "Engels (Moedertaal), Nederlands (Moedertaal), Twi (Gevorderd)"
       },
       "teaching": {
-        "title": "About Teaching",
-        "content": "My dedication to education is further underscored by my teaching certification, allowing me to teach mathematics at all levels up to university. This enables me to adapt my teaching style to students of all ages and abilities, making complex concepts accessible and engaging."
+        "title": "Over Onderwijs",
+        "content": "Mijn toewijding aan onderwijs wordt verder onderstreept door mijn onderwijsbevoegdheid, waardoor ik wiskunde kan onderwijzen op alle niveaus tot aan de universiteit. Dit stelt me in staat mijn lesstijl aan te passen aan studenten van alle leeftijden en capaciteiten, waardoor complexe concepten toegankelijk en boeiend worden."
       },
       "education": {
-        "title": "Education",
-        "content": "Master in Mathematics, specializing in quantum computing and dynamic systems.",
-        "expanded": "With a Master in Mathematics, my specializations include quantum computing, dynamic systems, and data science. My research spans quantum mechanics, linear algebra, differential equations, and chaos theory."
+        "title": "Opleiding",
+        "content": "Master in Wiskunde, gespecialiseerd in quantum computing en dynamische systemen.",
+        "expanded": "Met een Master in Wiskunde omvatten mijn specialisaties quantum computing, dynamische systemen en datawetenschap. Mijn onderzoek bestrijkt quantummechanica, lineaire algebra, differentiaalvergelijkingen en chaostheorie."
       },
       "tutoring": {
-        "title": "Tutoring Experience",
-        "content": "Started tutoring in high school, now offering personalized lessons in mathematics and data science.",
-        "expanded": "In high school, I went from a 4 to a 10 in mathematics. This journey ignited my passion for teaching and led me to start my tutoring business, charging €10 per hour while others charged €5, because I was a 10.",
-        "years": "15+ Years of Tutoring Experience"
+        "title": "Bijleservaring",
+        "content": "Begonnen met bijles geven op de middelbare school, nu gepersonaliseerde lessen in wiskunde en datawetenschap aanbieden.",
+        "expanded": "Op de middelbare school ging ik van een 4 naar een 10 in wiskunde. Deze reis ontketende mijn passie voor lesgeven en leidde ertoe dat ik mijn bijlesbedrijf begon, waarbij ik €10 per uur in rekening bracht terwijl anderen €5 vroegen, omdat ik een 10 was.",
+        "years": "15+ Jaar Bijleservaring"
       },
       "research": {
-        "title": "Research Highlight",
-        "content": "Working on an archive about the founders of computer science in the Netherlands, in collaboration with Professor Gerard Albert.",
-        "details": "Contributed to groundbreaking research projects related to computer science and the foundations of mathematics."
+        "title": "Onderzoekshoogtepunt",
+        "content": "Werken aan een archief over de grondleggers van de informatica in Nederland, in samenwerking met Professor Gerard Albert.",
+        "details": "Bijgedragen aan baanbrekende onderzoeksprojecten met betrekking tot informatica en de fundamenten van wiskunde."
       },
       "techStack": {
-        "title": "Technology Stack",
-        "content": "Proficient in Next.js, AI integration, and developing innovative educational tools. Building a web application that integrates AI for automatic note-taking and summarization features."
+        "title": "Technologie Stack",
+        "content": "Bekwaam in Next.js, AI-integratie en het ontwikkelen van innovatieve educatieve tools. Het bouwen van een webapplicatie die AI integreert voor automatische notities en samenvattingsfuncties."
       }
     }
   },
   "expertise": {
     "title": "Expertise",
-    "summary": "A summary of my expertise in various fields.",
+    "summary": "Een samenvatting van mijn expertise in verschillende velden.",
     "items": {
       "advancedEducation": {
-        "title": "Advanced Education",
-        "details": "I hold a Master's degree in Mathematics, with specializations in quantum informatics, dynamic systems, and data science. My academic background includes a strong focus on advanced mathematical concepts such as quantum mechanics, linear algebra, and chaos theory, as well as practical applications in real-world scenarios."
+        "title": "Geavanceerde Opleiding",
+        "details": "Ik heb een Master in Wiskunde, met specialisaties in quantum informatica, dynamische systemen en datawetenschap. Mijn academische achtergrond omvat een sterke focus op geavanceerde wiskundige concepten zoals quantummechanica, lineaire algebra en chaostheorie, evenals praktische toepassingen in real-world scenario's."
       },
       "diverseKnowledge": {
-        "title": "Diverse Mathematical Knowledge",
-        "details": "My expertise spans various mathematical fields, including quantum informatics, complex analysis, differential equations, and mathematical modeling. My research projects, such as those on entanglement-assisted zero-error communication, demonstrate my ability to apply advanced mathematical theories to solve complex problems."
+        "title": "Diverse Wiskundige Kennis",
+        "details": "Mijn expertise bestrijkt verschillende wiskundige velden, waaronder quantum informatica, complexe analyse, differentiaalvergelijkingen en wiskundige modellering. Mijn onderzoeksprojecten, zoals die over verstrengelingsondersteunde zero-error communicatie, tonen mijn vermogen om geavanceerde wiskundige theorieën toe te passen om complexe problemen op te lossen."
       },
       "teachingProficiency": {
-        "title": "Teaching Proficiency",
-        "details": "With over 15 years of experience in teaching mathematics and data science, I have developed a deep understanding of pedagogy. My teaching certification qualifies me to teach mathematics at all levels, from high school to university, allowing me to make difficult concepts accessible to students of all ages and abilities."
+        "title": "Onderwijsbekwaamheid",
+        "details": "Met meer dan 15 jaar ervaring in het onderwijzen van wiskunde en datawetenschap, heb ik een diep begrip van pedagogiek ontwikkeld. Mijn onderwijsbevoegdheid kwalificeert me om wiskunde op alle niveaus te onderwijzen, van middelbare school tot universiteit, waardoor ik moeilijke concepten toegankelijk kan maken voor studenten van alle leeftijden en capaciteiten."
       },
       "researchExperience": {
-        "title": "Research Experience",
-        "details": "I have collaborated on key research projects, such as an archive documenting the founders of computer science in the Netherlands, in collaboration with Professor Gerard Albert. These projects have deepened my understanding of the historical and foundational aspects of mathematics and computer science."
+        "title": "Onderzoekservaring",
+        "details": "Ik heb samengewerkt aan belangrijke onderzoeksprojecten, zoals een archief dat de grondleggers van de informatica in Nederland documenteert, in samenwerking met Professor Gerard Albert. Deze projecten hebben mijn begrip van de historische en fundamentele aspecten van wiskunde en informatica verdiept."
       },
       "appliedMathematics": {
-        "title": "Applied Mathematics",
-        "details": "My work in data consultancy involves applying mathematical concepts to solve practical problems. From statistical analysis and machine learning to data modeling, I bring a robust mathematical approach to real-world applications, ensuring precise and effective results."
+        "title": "Toegepaste Wiskunde",
+        "details": "Mijn werk in dataconsultancy omvat het toepassen van wiskundige concepten om praktische problemen op te lossen. Van statistische analyse en machine learning tot datamodellering, ik breng een robuuste wiskundige benadering naar real-world toepassingen, wat zorgt voor nauwkeurige en effectieve resultaten."
       },
       "interdisciplinaryApproach": {
-        "title": "Interdisciplinary Approach",
-        "details": "In addition to mathematics, I am passionate about data science, music, and photography. This interdisciplinary mindset enhances my problem-solving skills, allowing me to approach mathematical challenges from unique perspectives, whether through visual data analysis or algorithmic music composition."
+        "title": "Interdisciplinaire Benadering",
+        "details": "Naast wiskunde ben ik gepassioneerd over datawetenschap, muziek en fotografie. Deze interdisciplinaire mindset verbetert mijn probleemoplossende vaardigheden, waardoor ik wiskundige uitdagingen vanuit unieke perspectieven kan benaderen, of het nu gaat om visuele data-analyse of algoritmische muziekcompositie."
       },
       "programmingSkills": {
-        "title": "Programming Skills",
-        "details": "I am proficient in various programming languages, including Python, JavaScript, and frameworks like Next.js. I have integrated AI into my educational tools, automating tasks such as note-taking and summaries, and I regularly apply machine learning techniques to optimize data-driven projects."
+        "title": "Programmeervaardigheden",
+        "details": "Ik ben bedreven in verschillende programmeertalen, waaronder Python, JavaScript en frameworks zoals Next.js. Ik heb AI geïntegreerd in mijn educatieve tools, waardoor taken zoals notities maken en samenvattingen automatiseren, en ik pas regelmatig machine learning technieken toe om datagestuurde projecten te optimaliseren."
       },
       "mathematicalCommunication": {
-        "title": "Mathematical Communication",
-        "details": "Fluent in English and Dutch, I am adept at communicating complex mathematical ideas across linguistic and cultural barriers. My experience teaching in diverse educational settings has refined my ability to simplify intricate concepts and convey them clearly to both academic and non-academic audiences."
+        "title": "Wiskundige Communicatie",
+        "details": "Vloeiend in Engels en Nederlands, ik ben bedreven in het communiceren van complexe wiskundige ideeën over taalkundige en culturele barrières heen. Mijn ervaring met lesgeven in diverse onderwijsomgevingen heeft mijn vermogen verfijnd om ingewikkelde concepten te vereenvoudigen en duidelijk over te brengen aan zowel academische als niet-academische doelgroepen."
       },
       "problemSolving": {
-        "title": "Problem-Solving Skills",
-        "details": "Throughout my academic and professional journey, I have honed my analytical and problem-solving skills. Whether it's solving complex mathematical equations, troubleshooting data models, or developing innovative software solutions, I thrive on tackling challenging problems with a logical and methodical approach."
+        "title": "Probleemoplossende Vaardigheden",
+        "details": "Gedurende mijn academische en professionele reis heb ik mijn analytische en probleemoplossende vaardigheden aangescherpt. Of het nu gaat om het oplossen van complexe wiskundige vergelijkingen, het oplossen van datamodellen of het ontwikkelen van innovatieve softwareoplossingen, ik gedij op het aanpakken van uitdagende problemen met een logische en methodische benadering."
       },
       "lifelongLearner": {
-        "title": "Lifelong Learner",
-        "details": "I am deeply committed to continuous learning, always staying updated on the latest advancements in mathematics, technology, and related fields. This dedication to self-improvement ensures that my skills remain sharp and that I can offer the most cutting-edge solutions in both teaching and consulting."
+        "title": "Levenslange Leerling",
+        "details": "Ik ben diep toegewijd aan continu leren en blijf altijd op de hoogte van de laatste ontwikkelingen in wiskunde, technologie en aanverwante velden. Deze toewijding aan zelfverbetering zorgt ervoor dat mijn vaardigheden scherp blijven en dat ik de meest geavanceerde oplossingen kan bieden in zowel onderwijs als consultancy."
       },
       "researchAppliedMath": {
-        "title": "Research and Applied Mathematics",
-        "details": "My research covers various aspects of applied mathematics, including stability analysis of systems, zero-error communication in quantum channels, and data science techniques. These projects demonstrate my ability to bridge the gap between theory and application, making significant contributions to both academic and industrial fields."
+        "title": "Onderzoek en Toegepaste Wiskunde",
+        "details": "Mijn onderzoek bestrijkt verschillende aspecten van toegepaste wiskunde, waaronder stabiliteitsanalyse van systemen, zero-error communicatie in quantumkanalen en datawetenschapstechnieken. Deze projecten tonen mijn vermogen om de kloof tussen theorie en toepassing te overbruggen, waardoor ik significante bijdragen lever aan zowel academische als industriële velden."
       }
     }
   },
   "photos": {
     "outdoor": {
-      "caption": "A glimpse into my world of mathematics and style - where elegance and equations meet."
+      "caption": "Een glimp van mijn wereld van wiskunde en stijl - waar elegantie en vergelijkingen samenkomen."
     },
     "teaching": {
-      "caption": "Passion in action: Conveying mathematical concepts with enthusiasm and precision."
+      "caption": "Passie in actie: Wiskundige concepten overbrengen met enthousiasme en precisie."
     }
   }
 }
