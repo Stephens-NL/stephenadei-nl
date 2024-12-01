@@ -9,6 +9,7 @@ import BentoGrid from '@/components/BentoGrid';
 import Modal from '@/components/Modal';
 import FlagButton from '@/components/FlagButton';
 import i18n from '../i18n';
+import EnhancedContactSection from '@/components/EnhancedContactSection';
 
 type ServiceKey = 'privateTutoring' | 'dataConsultancy' | 'photography' | 'music';
 
@@ -261,6 +262,9 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <EnhancedContactSection />
+
 
       {/* Modal Component */}
       <Modal
