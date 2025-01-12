@@ -8,19 +8,19 @@ export default function GlobalError({
   return (
     <html>
       <body>
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-          <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">
-              Something went wrong!
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <div className="p-6 max-w-sm mx-auto">
+            <h2 className="text-lg font-medium text-gray-900 mb-2">
+              Er is iets misgegaan
             </h2>
-            <p className="text-gray-600 mb-4">
-              An unexpected error has occurred. Please try again later.
+            <p className="text-gray-600 text-sm mb-4">
+              Probeer het opnieuw
             </p>
             <button
               onClick={() => reset()}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+              className="text-sm px-3 py-1.5 bg-gray-100 text-gray-700 rounded hover:bg-gray-200"
             >
-              Try again
+              Opnieuw laden
             </button>
           </div>
         </div>
