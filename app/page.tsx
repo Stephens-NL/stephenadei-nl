@@ -25,7 +25,7 @@ const serviceCards: ServiceCard[] = [
   {
     key: 'privateTutoring',
     icon: <GraduationCap className="w-8 h-8 transition-colors duration-300 group-hover:text-yellow-400" />,
-    url: 'https://privelessen.stephenadei.nl',
+    url: 'https://stephensprivelessen.nl',
     isLive: true,
   },
   {
