@@ -1,6 +1,7 @@
 // app/layout.tsx
 
 import { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import { Inter } from 'next/font/google';
 
@@ -59,7 +60,27 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <Script id="chatwoot-sdk">
+          {`
+            (function(d,t) {
+              var BASE_URL="https://crm.stephenadei.nl";
+              var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+              g.src=BASE_URL+"/packs/js/sdk.js";
+              g.defer = true;
+              g.async = true;
+              s.parentNode.insertBefore(g,s);
+              g.onload=function(){
+                window.chatwootSDK.run({
+                  websiteToken: 'p4kWNZbQeTEVvMXd6LqnjftF',
+                  baseUrl: BASE_URL
+                })
+              }
+            })(document,"script");
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
