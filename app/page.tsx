@@ -32,7 +32,7 @@ const serviceCards: ServiceCard[] = [
     key: 'dataConsultancy',
     icon: <Database className="w-8 h-8" />,
     url: 'https://data.stephenadei.nl',
-    isLive: false,
+    isLive: true,
   },
   {
     key: 'photography',
