@@ -1,0 +1,18 @@
+---
+title: "Aantekeningen App"
+description: "AI-powered student notes management"
+techStack: ["Next.js", "Prisma", "LangChain", "OpenAI", "AWS S3", "Google Drive API"]
+---
+
+## Overview
+
+A notes management application that syncs student documents from Google Drive to AWS S3, then uses AI to extract metadata, parse dates, and generate summaries.
+
+## Key Features
+
+- **Google Drive sync** to S3 datalake (Bronze tier)
+- **AI metadata extraction** using LangChain/OpenAI
+- **Date parsing** and intelligent file organization
+- **List/grid views** with taxonomy management
+- **3-layer caching** — in-memory, React Query, browser
+- **Comprehensive test suite** — unit, integration, security, e2e, performance

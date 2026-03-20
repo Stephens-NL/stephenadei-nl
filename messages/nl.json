@@ -1,0 +1,162 @@
+{
+  "Nav": {
+    "projects": "Projecten",
+    "research": "Onderzoek",
+    "creative": "Creatief",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "name": "STEPHEN ADEI",
+    "headline": "Productie-datasystemen bouwen — ondersteund door twee masteropleidingen in wiskunde en onderwijs",
+    "badge1": "15+ jaar STEM onderwijs",
+    "badge2": "AWS data-architectuur",
+    "badge3": "Quantum computing onderzoek",
+    "ctaWork": "Bekijk mijn werk",
+    "ctaContact": "Neem contact op"
+  },
+  "Services": {
+    "title": "DIENSTEN",
+    "privateTutoring": {
+      "title": "Privé Bijles",
+      "description": "Exclusieve één-op-één leerervaringen afgestemd op jouw behoeften.",
+      "cta": "Begin met leren"
+    },
+    "dataConsultancy": {
+      "title": "Dataconsultancy",
+      "description": "Ontgrendel de kracht van uw gegevens met onze deskundige adviesdiensten.",
+      "cta": "Ontdek diensten"
+    },
+    "photography": {
+      "title": "Fotografie",
+      "description": "Leg uw speciale momenten vast met onze professionele fotografiediensten.",
+      "cta": "Bekijk portfolio"
+    },
+    "music": {
+      "title": "Muziek",
+      "description": "Ontdek mijn muzikale creaties en diensten.",
+      "cta": "Luister nu"
+    },
+    "comingSoon": "Binnenkort beschikbaar",
+    "visitSite": "Bezoek site"
+  },
+  "Projects": {
+    "title": "Projecten",
+    "learnMore": "Meer informatie →",
+    "sa3": {
+      "title": "SA3",
+      "description": "Schoolbeheersysteem voor 1500 leerlingen met meerdere curricula en volledige AWS-infrastructuur."
+    },
+    "privelessenDashboard": {
+      "title": "Privelessen Dashboard",
+      "description": "Bedrijfsmanagementtool voor de bijlespraktijk met Calendar-sync, Stripe en CRM."
+    },
+    "aantekeningenApp": {
+      "title": "Aantekeningen App",
+      "description": "AI-aangedreven studentenaantekeningenbeheer met LangChain/OpenAI en Google Drive-sync."
+    },
+    "platformApi": {
+      "title": "Platform API + Data Lake",
+      "description": "REST API en medaillonarchitectuur (Brons/Zilver/Goud) op AWS S3 met ETL-pipelines."
+    },
+    "stephenstat": {
+      "title": "StephenStat",
+      "description": "Statistisch analyse- en visualisatietool die wiskunde en engineering verbindt."
+    }
+  },
+  "Research": {
+    "title": "Onderzoeksfundamenten",
+    "education": {
+      "title": "Opleiding",
+      "msc": {
+        "title": "MSc Wiskunde — Quantum Informatica & Dynamische Systemen",
+        "institution": "Universiteit van Amsterdam",
+        "years": "2021–2026"
+      },
+      "ilo": {
+        "title": "Master Leraar VHO Wiskunde",
+        "institution": "ILO, Universiteit van Amsterdam",
+        "years": "2023–2026"
+      },
+      "bsc": {
+        "title": "BSc Wiskunde",
+        "institution": "Universiteit van Amsterdam",
+        "years": "2018–2021"
+      }
+    },
+    "outputs": {
+      "title": "Onderzoeksresultaten",
+      "theses": {
+        "masters": {
+          "title": "Entanglement-assisted zero-error communication",
+          "type": "Masterscriptie",
+          "description": "Onderzoek naar de zero-error communicatiecapaciteit van ruisende klassieke kanalen met behulp van gedeelde verstrengeling."
+        },
+        "teaching": {
+          "title": "Kunstmatige intelligentie ter ondersteuning van statistisch onderzoek",
+          "type": "Onderwijsscriptie",
+          "description": "AI-gebaseerde scaffolds met ChatGPT om studenten te helpen statistische onderzoeksvragen te formuleren."
+        },
+        "bachelors": {
+          "title": "Mathematische Epidemiologie: Van Data naar Model",
+          "type": "Bachelorscriptie",
+          "description": "Een verkenning van eenvoudige epidemische modellen en hun toepassing op real-world data."
+        },
+        "biomath": {
+          "title": "Stabiliteit van Enzymatische Reactieketens",
+          "type": "Biomathematica Project",
+          "description": "Analyse van de stabiliteit van enzymatische reactieketens met behulp van wiskundige modellering."
+        }
+      }
+    },
+    "plukDeData": {
+      "title": "Pluk de Data — Computational Thinking in het Voortgezet Onderwijs",
+      "description": "SIA Raak Publiek-gefinancierd onderzoek met HvA & UvA over het onderwijzen van computational thinking in verschillende vakken.",
+      "role": "Datastructurering, archiefontwerp, kennisclip-creatie, symposiumpresentatie (okt 2024)",
+      "watchVideo": "Bekijk kennisclip",
+      "visitProject": "Bezoek projectpagina"
+    },
+    "archive": {
+      "title": "Archief: Grondleggers van Informatica in Nederland",
+      "description": "Samenwerkingsonderzoek met Professor Gerard Albert over de documentatie van de grondleggers van informatica in Nederland."
+    },
+    "downloadPdf": "Download PDF",
+    "viewFullPage": "Bekijk volledige onderzoekspagina →"
+  },
+  "TechStack": {
+    "title": "Technische Stack",
+    "languages": "Talen & Frameworks",
+    "dataCloud": "Data & Cloud",
+    "databases": "Databases & Infrastructuur",
+    "aiMl": "AI & ML"
+  },
+  "CreativeStack": {
+    "title": "Creatieve Stack",
+    "photography": "Fotografie",
+    "musicProduction": "Muziekproductie",
+    "videoContent": "Video/Content",
+    "design": "Design",
+    "explore": "Ontdek creatief werk →"
+  },
+  "About": {
+    "title": "Over Mij",
+    "content": "Wiskundige, engineer en docent uit Amsterdam. Ik begon met bijles geven op mijn 15e voor €10/uur terwijl anderen €5 vroegen — want ik ging van een 4 naar een 10 voor wiskunde. Die reis ontketende een passie voor lesgeven die nu al meer dan 15 jaar beslaat. Vandaag volg ik twee masteropleidingen tegelijk terwijl ik productie-datasystemen bouw.",
+    "languages": "Engels (Moedertaal) · Nederlands (Moedertaal) · Twi (Gevorderd)",
+    "languagesLabel": "Talen"
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Stephen Adei, BSc",
+    "role": "Data Engineer · Wiskundige · Docent",
+    "email": "E-mail",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "showPhone": "Toon telefoonnummer",
+    "available": "Beschikbaar voor projecten, bijles en samenwerking."
+  },
+  "Common": {
+    "backToHome": "← Terug naar home",
+    "visitLiveSite": "Bezoek live site",
+    "comingSoonContent": "Binnenkort beschikbaar — portfolio in ontwikkeling."
+  }
+}

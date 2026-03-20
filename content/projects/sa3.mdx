@@ -1,0 +1,23 @@
+---
+title: "SA3 — School Management System"
+description: "Multi-curriculum school management for 500-1500 students"
+techStack: ["Next.js 15", "React 19", "Prisma 5", "AWS RDS", "S3", "SQS", "Lambda", "KMS", "Terraform"]
+url: "https://sa3.stephensprive.app"
+---
+
+## Overview
+
+SA3 is a full-stack school management system built for an international school in Ghana, supporting multiple curricula (GES Primary, WASSCE, Cambridge IGCSE) and serving 500-1500 students per term.
+
+## Key Features
+
+- **Multi-curriculum support** — GES Primary, WASSCE, Cambridge IGCSE with distinct grading rules
+- **Role-scoped permissions** — staff access controlled by role
+- **Weighted grading** — configurable assessment workflows per curriculum
+- **Offline score entry** — PWA with IndexedDB for unreliable connectivity
+- **PDF report cards** — generated at scale
+- **Field-level encryption** — AWS KMS for PII data protection
+
+## Architecture
+
+Deployed on AWS App Runner (containerised), with RDS (PostgreSQL), S3 for document storage, SQS for async operations, and Lambda for PDF generation. Infrastructure managed via Terraform.

@@ -1,0 +1,162 @@
+{
+  "Nav": {
+    "projects": "Projects",
+    "research": "Research",
+    "creative": "Creative",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "name": "STEPHEN ADEI",
+    "headline": "Engineering production data systems — backed by two Master's degrees in mathematics and education",
+    "badge1": "15+ years STEM education",
+    "badge2": "AWS data architecture",
+    "badge3": "Quantum computing research",
+    "ctaWork": "See my work",
+    "ctaContact": "Get in touch"
+  },
+  "Services": {
+    "title": "SERVICES",
+    "privateTutoring": {
+      "title": "Private Tutoring",
+      "description": "Exclusive one-on-one learning experiences tailored to your needs.",
+      "cta": "Start Learning"
+    },
+    "dataConsultancy": {
+      "title": "Data Consultancy",
+      "description": "Unlock the power of your data with our expert consultancy services.",
+      "cta": "Explore Services"
+    },
+    "photography": {
+      "title": "Photography",
+      "description": "Capture your special moments with our professional photography services.",
+      "cta": "View Portfolio"
+    },
+    "music": {
+      "title": "Music",
+      "description": "Discover my musical creations and services.",
+      "cta": "Listen Now"
+    },
+    "comingSoon": "Coming Soon",
+    "visitSite": "Visit Site"
+  },
+  "Projects": {
+    "title": "Projects",
+    "learnMore": "Learn more →",
+    "sa3": {
+      "title": "SA3",
+      "description": "School management system serving 1500 students across multiple curricula with full AWS infrastructure."
+    },
+    "privelessenDashboard": {
+      "title": "Privelessen Dashboard",
+      "description": "Business management tool for the tutoring practice with Calendar sync, Stripe, and CRM."
+    },
+    "aantekeningenApp": {
+      "title": "Aantekeningen App",
+      "description": "AI-powered student notes management with LangChain/OpenAI and Google Drive sync."
+    },
+    "platformApi": {
+      "title": "Platform API + Data Lake",
+      "description": "REST API and medallion architecture (Bronze/Silver/Gold) on AWS S3 with ETL pipelines."
+    },
+    "stephenstat": {
+      "title": "StephenStat",
+      "description": "Statistical analysis and visualization tool bridging mathematics and engineering."
+    }
+  },
+  "Research": {
+    "title": "Research Foundations",
+    "education": {
+      "title": "Education",
+      "msc": {
+        "title": "MSc Mathematics — Quantum Informatics & Dynamical Systems",
+        "institution": "University of Amsterdam",
+        "years": "2021–2026"
+      },
+      "ilo": {
+        "title": "Master Leraar VHO Wiskunde",
+        "institution": "ILO, University of Amsterdam",
+        "years": "2023–2026"
+      },
+      "bsc": {
+        "title": "BSc Mathematics",
+        "institution": "University of Amsterdam",
+        "years": "2018–2021"
+      }
+    },
+    "outputs": {
+      "title": "Research Outputs",
+      "theses": {
+        "masters": {
+          "title": "Entanglement-assisted zero-error communication",
+          "type": "Master's Thesis",
+          "description": "Investigation of zero-error communication capacity of noisy classical channels using shared entanglement."
+        },
+        "teaching": {
+          "title": "Kunstmatige intelligentie ter ondersteuning van statistisch onderzoek",
+          "type": "Teaching Thesis",
+          "description": "AI-based scaffolds using ChatGPT to help students frame statistical research questions."
+        },
+        "bachelors": {
+          "title": "Mathematical Epidemiology: From Data to Model",
+          "type": "Bachelor's Thesis",
+          "description": "An exploration of simple epidemic models and their application to real-world data."
+        },
+        "biomath": {
+          "title": "Stability of Enzymatic Reaction Chains",
+          "type": "Biomathematics Project",
+          "description": "Analysis of the stability of enzymatic reaction chains using mathematical modeling."
+        }
+      }
+    },
+    "plukDeData": {
+      "title": "Pluk de Data — Computational Thinking in Secondary Education",
+      "description": "SIA Raak Publiek-funded research with HvA & UvA on teaching computational thinking across disciplines.",
+      "role": "Data structuring, archive design, knowledge clip creation, symposium presentation (Oct 2024)",
+      "watchVideo": "Watch kennisclip",
+      "visitProject": "Visit project page"
+    },
+    "archive": {
+      "title": "Archive: Founders of CS in the Netherlands",
+      "description": "Collaborative research project with Professor Gerard Albert documenting the founders of computer science in the Netherlands."
+    },
+    "downloadPdf": "Download PDF",
+    "viewFullPage": "View full research page →"
+  },
+  "TechStack": {
+    "title": "Technical Stack",
+    "languages": "Languages & Frameworks",
+    "dataCloud": "Data & Cloud",
+    "databases": "Databases & Infrastructure",
+    "aiMl": "AI & ML"
+  },
+  "CreativeStack": {
+    "title": "Creative Stack",
+    "photography": "Photography",
+    "musicProduction": "Music Production",
+    "videoContent": "Video/Content",
+    "design": "Design",
+    "explore": "Explore creative work →"
+  },
+  "About": {
+    "title": "About Me",
+    "content": "Amsterdam-based mathematician, engineer, and educator. I started tutoring at 15, charging €10/hour when others charged €5 — because I went from a 4 to a 10 in mathematics. That journey ignited a passion for teaching that's now spanned 15+ years. Today I'm pursuing two Master's degrees simultaneously while building production data systems.",
+    "languages": "English (Native) · Dutch (Native) · Twi (Proficient)",
+    "languagesLabel": "Languages"
+  },
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "Stephen Adei, BSc",
+    "role": "Data Engineer · Mathematician · Educator",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "showPhone": "Show phone number",
+    "available": "Available for projects, tutoring, and collaboration."
+  },
+  "Common": {
+    "backToHome": "← Back to home",
+    "visitLiveSite": "Visit live site",
+    "comingSoonContent": "Content coming soon — portfolio in development."
+  }
+}
