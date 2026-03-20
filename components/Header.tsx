@@ -28,7 +28,8 @@ export default function Header() {
   ];
 
   const switchLocale = (locale: 'en' | 'nl') => {
-    router.replace(pathname, { locale });
+    const newPath = locale === 'en' ? pathname : `/nl${pathname === '/' ? '' : pathname}`;
+    window.location.href = newPath;
   };
 
   return (
