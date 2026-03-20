@@ -19,6 +19,12 @@ export default async function ResearchPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <BackLink />
         <SectionHeading title={t('title')} />
+
+        {/* Featured video */}
+        <div className="mb-16">
+          <YouTubeEmbed videoId="NAvG24xGFHU" title={t('plukDeData.title')} />
+        </div>
+
         <div className="mb-16">
           <h3 className="text-2xl font-semibold text-emerald-100 mb-8">{t('education.title')}</h3>
           <div className="border-l-2 border-emerald-700/50 pl-8 space-y-8">
@@ -48,19 +54,18 @@ export default async function ResearchPage() {
             ))}
           </div>
         </div>
+        {/* Pluk de Data */}
         <div className="mb-16">
           <div className="rounded-xl p-8 bg-gradient-to-br from-emerald-800/40 to-emerald-900/40 border border-emerald-600/30">
             <h3 className="text-2xl font-bold text-emerald-100 mb-4">{t('plukDeData.title')}</h3>
             <p className="text-emerald-200/80 mb-3">{t('plukDeData.description')}</p>
             <p className="text-sm text-emerald-300 mb-6">{t('plukDeData.role')}</p>
-            <div className="mb-6">
-              <YouTubeEmbed videoId="NAvG24xGFHU" title={t('plukDeData.title')} />
-            </div>
             <a href="https://www.hva.nl/onderzoeksresultaten/2025/6/computational-thinking-pluk-de-data" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-emerald-300 hover:text-white transition-colors">
               <ExternalLink className="w-4 h-4" />{t('plukDeData.visitProject')}
             </a>
           </div>
         </div>
+
         <div className="rounded-xl p-6 bg-emerald-800/30 border border-emerald-700/30">
           <h4 className="text-xl font-semibold text-emerald-100 mb-3">{t('archive.title')}</h4>
           <p className="text-emerald-200/80">{t('archive.description')}</p>
