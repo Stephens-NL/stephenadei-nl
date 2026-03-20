@@ -1,0 +1,24 @@
+---
+title: "Platform API + Data Lake"
+description: "REST API and medallion architecture on AWS S3"
+techStack: ["Express", "TypeScript", "AWS S3", "Glue", "Athena", "Prisma", "EventBridge"]
+url: "https://upload.stephensprive.app"
+---
+
+## Overview
+
+The operational backbone — a REST API providing external access to the PostgreSQL database and S3 datalake, plus the medallion data architecture that powers analytics across all projects.
+
+## Data Lake Architecture
+
+Three-tier medallion strategy on AWS S3:
+- **Bronze** — raw data (PDFs, calendar exports, photos)
+- **Silver** — cleaned, structured Parquet (Glue-registered tables)
+- **Gold** — analytics-ready aggregations
+
+## API Features
+
+- Student database access
+- S3 file uploads with presigned URLs
+- Event-driven processing via EventBridge
+- Upload portal for external file submissions
