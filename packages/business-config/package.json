@@ -1,0 +1,15 @@
+{
+  "name": "@stephen/business-config",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && ts-node --project scripts/tsconfig.json scripts/generate-json.ts",
+    "generate": "ts-node --project scripts/tsconfig.json scripts/generate-json.ts"
+  },
+  "files": ["dist", "rates.json"],
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "ts-node": "^10.9.2"
+  }
+}
