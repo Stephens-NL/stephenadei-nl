@@ -6,16 +6,32 @@
 
 **Architecture:** Hybrid single-page overview with deep-dive routes (`/projects/[slug]`, `/research`, `/creative`). Migrating from react-i18next to next-intl for SSR. Server components by default with client islands for interactivity.
 
-**Tech Stack:** Next.js 14, React 18, TailwindCSS 3, next-intl, next-mdx-remote, lucide-react
+**Tech Stack:** Next.js 14, React 18, TailwindCSS 3, @tailwindcss/typography, next-intl, next-mdx-remote, lucide-react
+
+**Important Next.js 14 note:** In Next.js 14, `params` is a synchronous plain object (e.g. `{ locale: string }`), NOT a `Promise`. Do NOT `await` params. This changes in Next.js 15.
 
 **Spec:** `docs/superpowers/specs/2026-03-20-portfolio-redesign-design.md`
 
 ---
 
-## Task 1: Dependency cleanup and next-intl installation
+## Task 1: Atomic i18n migration (deps + config + translations + routing)
+
+This task is atomic — all changes land in one commit to avoid broken build states between the old react-i18next imports being removed and the new next-intl setup being in place.
 
 **Files:**
 - Modify: `package.json`
+- Create: `i18n/routing.ts`, `i18n/request.ts`, `i18n/navigation.ts`
+- Create: `middleware.ts`
+- Modify: `next.config.mjs`
+- Create: `messages/en.json`, `messages/nl.json`
+- Delete: `i18n.ts`, `pages/_app.tsx`, `types/i18n.d.ts`, `react-pdf.d.ts`, `public/locales/`
+- Delete: `tailwind.config.js` (keep only `tailwind.config.ts`)
+- Move: `app/page.tsx` → `app/[locale]/page.tsx` (stubbed)
+- Move: `app/layout.tsx` → `app/[locale]/layout.tsx` (rewritten)
+- Move: `app/global-error.tsx` → `app/[locale]/global-error.tsx`
+- Create: `app/[locale]/projects/[slug]/page.tsx` (placeholder)
+- Create: `app/[locale]/research/page.tsx` (placeholder)
+- Create: `app/[locale]/creative/page.tsx` (placeholder)
 
 - [ ] **Step 1: Remove old i18n and unused PDF packages**
 
@@ -23,10 +39,10 @@
 npm uninstall i18next react-i18next next-i18next @react-pdf-viewer/core @react-pdf-viewer/default-layout @react-pdf/renderer react-pdf pdfjs-dist focus-trap-react react-transition-group
 ```
 
-- [ ] **Step 2: Install next-intl and MDX support**
+- [ ] **Step 2: Install next-intl, MDX support, and typography plugin**
 
 ```bash
-npm install next-intl next-mdx-remote gray-matter
+npm install next-intl next-mdx-remote gray-matter @tailwindcss/typography
 ```
 
 - [ ] **Step 3: Verify install succeeded**
@@ -37,25 +53,7 @@ npm ls next-intl
 
 Expected: `next-intl@<version>` with no errors
 
-- [ ] **Step 4: Commit**
-
-```bash
-git add package.json package-lock.json
-git commit -m "chore: swap i18n stack and remove unused PDF deps"
-```
-
----
-
-## Task 2: Set up next-intl routing, middleware, and config
-
-**Files:**
-- Create: `i18n/routing.ts`
-- Create: `i18n/request.ts`
-- Create: `i18n/navigation.ts`
-- Create: `middleware.ts`
-- Modify: `next.config.mjs`
-
-- [ ] **Step 1: Create `i18n/routing.ts`**
+- [ ] **Step 4: Create `i18n/routing.ts`**
 
 ```typescript
 // i18n/routing.ts
@@ -68,7 +66,7 @@ export const routing = defineRouting({
 });
 ```
 
-- [ ] **Step 2: Create `i18n/request.ts`**
+- [ ] **Step 5: Create `i18n/request.ts`**
 
 ```typescript
 // i18n/request.ts
@@ -89,7 +87,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 });
 ```
 
-- [ ] **Step 3: Create `i18n/navigation.ts`**
+- [ ] **Step 6: Create `i18n/navigation.ts`**
 
 ```typescript
 // i18n/navigation.ts
@@ -100,7 +98,7 @@ export const { Link, redirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);
 ```
 
-- [ ] **Step 4: Create `middleware.ts`**
+- [ ] **Step 7: Create `middleware.ts`**
 
 ```typescript
 // middleware.ts
@@ -114,7 +112,7 @@ export const config = {
 };
 ```
 
-- [ ] **Step 5: Update `next.config.mjs`**
+- [ ] **Step 8: Update `next.config.mjs`**
 
 Remove the `i18n` key (Pages Router only) and add the next-intl plugin:
 
@@ -132,29 +130,7 @@ const config = {
 export default withNextIntl(config);
 ```
 
-- [ ] **Step 6: Commit**
-
-```bash
-git add i18n/ middleware.ts next.config.mjs
-git commit -m "feat: set up next-intl routing, middleware, and config"
-```
-
----
-
-## Task 3: Migrate translation files
-
-**Files:**
-- Create: `messages/en.json`
-- Create: `messages/nl.json`
-- Delete: `public/locales/en/common.json`
-- Delete: `public/locales/nl/common.json`
-- Delete: `i18n.ts`
-- Delete: `next-i18next.config.js`
-- Delete: `pages/_app.tsx`
-- Delete: `types/i18n.d.ts`
-- Delete: `react-pdf.d.ts`
-
-- [ ] **Step 1: Create `messages/en.json`**
+- [ ] **Step 9: Create `messages/en.json`**
 
 Restructure from the old flat `common` namespace into next-intl namespaces. Reorganize content to match new sections. Keep existing translations and add new keys for all new sections (hero, projects, research, techStack, creativeStack, nav, etc.):
 
@@ -280,7 +256,8 @@ Restructure from the old flat `common` namespace into next-intl namespaces. Reor
       "title": "Archive: Founders of CS in the Netherlands",
       "description": "Collaborative research project with Professor Gerard Albert documenting the founders of computer science in the Netherlands."
     },
-    "downloadPdf": "Download PDF"
+    "downloadPdf": "Download PDF",
+    "viewFullPage": "View full research page →"
   },
   "TechStack": {
     "title": "Technical Stack",
@@ -315,12 +292,14 @@ Restructure from the old flat `common` namespace into next-intl namespaces. Reor
     "available": "Available for projects, tutoring, and collaboration."
   },
   "Common": {
-    "backToHome": "← Back to home"
+    "backToHome": "← Back to home",
+    "visitLiveSite": "Visit live site",
+    "comingSoonContent": "Content coming soon — portfolio in development."
   }
 }
 ```
 
-- [ ] **Step 2: Create `messages/nl.json`**
+- [ ] **Step 10: Create `messages/nl.json`**
 
 Same structure as `en.json` but with Dutch translations. Migrate existing translations from `public/locales/nl/common.json` and translate new keys:
 
@@ -446,7 +425,8 @@ Same structure as `en.json` but with Dutch translations. Migrate existing transl
       "title": "Archief: Grondleggers van Informatica in Nederland",
       "description": "Samenwerkingsonderzoek met Professor Gerard Albert over de documentatie van de grondleggers van informatica in Nederland."
     },
-    "downloadPdf": "Download PDF"
+    "downloadPdf": "Download PDF",
+    "viewFullPage": "Bekijk volledige onderzoekspagina →"
   },
   "TechStack": {
     "title": "Technische Stack",
@@ -481,49 +461,23 @@ Same structure as `en.json` but with Dutch translations. Migrate existing transl
     "available": "Beschikbaar voor projecten, bijles en samenwerking."
   },
   "Common": {
-    "backToHome": "← Terug naar home"
+    "backToHome": "← Terug naar home",
+    "visitLiveSite": "Bezoek live site",
+    "comingSoonContent": "Binnenkort beschikbaar — portfolio in ontwikkeling."
   }
 }
 ```
 
-- [ ] **Step 3: Delete old i18n files**
+- [ ] **Step 11: Delete old i18n files and duplicate config**
 
 ```bash
-rm -f i18n.ts pages/_app.tsx types/i18n.d.ts react-pdf.d.ts
+rm -f i18n.ts pages/_app.tsx types/i18n.d.ts react-pdf.d.ts tailwind.config.js
 rm -rf public/locales
 rmdir pages 2>/dev/null || true
 rmdir types 2>/dev/null || true
 ```
 
-- [ ] **Step 4: Verify build is not broken yet**
-
-```bash
-npm run lint
-```
-
-Note: Build will not pass yet — we still need to move `app/` to `app/[locale]/`. That's the next task.
-
-- [ ] **Step 5: Commit**
-
-```bash
-git add messages/ && git rm -r public/locales i18n.ts pages/_app.tsx types/i18n.d.ts react-pdf.d.ts
-git commit -m "feat: migrate translation files to next-intl messages format"
-```
-
----
-
-## Task 4: Restructure app directory for locale routing
-
-**Files:**
-- Move: `app/page.tsx` → `app/[locale]/page.tsx`
-- Move: `app/layout.tsx` → `app/[locale]/layout.tsx`
-- Move: `app/global-error.tsx` → `app/[locale]/global-error.tsx`
-- Move: `app/globals.css` stays at `app/globals.css` (referenced from layout)
-- Create: `app/[locale]/projects/[slug]/page.tsx` (placeholder)
-- Create: `app/[locale]/research/page.tsx` (placeholder)
-- Create: `app/[locale]/creative/page.tsx` (placeholder)
-
-- [ ] **Step 1: Create locale directory and move files**
+- [ ] **Step 12: Create locale directory and move files**
 
 ```bash
 mkdir -p app/\[locale\]/projects/\[slug\] app/\[locale\]/research app/\[locale\]/creative
@@ -532,7 +486,7 @@ mv app/layout.tsx app/\[locale\]/layout.tsx
 mv app/global-error.tsx app/\[locale\]/global-error.tsx
 ```
 
-- [ ] **Step 2: Update layout.tsx for next-intl**
+- [ ] **Step 13: Update layout.tsx for next-intl**
 
 Replace the entire `app/[locale]/layout.tsx` with:
 
@@ -603,9 +557,9 @@ export default async function RootLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }) {
-  const { locale } = await params;
+  const { locale } = params;
 
   if (!routing.locales.includes(locale as 'en' | 'nl')) {
     notFound();
@@ -643,7 +597,7 @@ export default async function RootLayout({
 }
 ```
 
-- [ ] **Step 3: Create placeholder subpages**
+- [ ] **Step 14: Create placeholder subpages**
 
 `app/[locale]/projects/[slug]/page.tsx`:
 ```tsx
@@ -655,8 +609,8 @@ export function generateStaticParams() {
   return validSlugs.map((slug) => ({ slug }));
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProjectPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const t = await getTranslations('Projects');
   return (
     <div className="min-h-screen bg-emerald-900 text-white p-8">
@@ -697,7 +651,7 @@ export default async function CreativePage() {
 }
 ```
 
-- [ ] **Step 4: Stub out `app/[locale]/page.tsx` temporarily**
+- [ ] **Step 15: Stub out `app/[locale]/page.tsx` temporarily**
 
 Replace contents with a minimal server component to verify routing works:
 
@@ -714,7 +668,7 @@ export default async function Home() {
 }
 ```
 
-- [ ] **Step 5: Verify the build passes**
+- [ ] **Step 16: Verify the build passes**
 
 ```bash
 npm run build
@@ -722,16 +676,16 @@ npm run build
 
 Expected: Build succeeds. Visiting `/` shows "STEPHEN ADEI" in emerald. Visiting `/nl` shows the same (locale switch works).
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 17: Commit everything atomically**
 
 ```bash
-git add app/ middleware.ts
-git commit -m "feat: restructure app directory for locale-based routing with next-intl"
+git add -A
+git commit -m "feat: atomic i18n migration from react-i18next to next-intl with locale routing"
 ```
 
 ---
 
-## Task 5: Create data layer and shared components
+## Task 2: Create data layer and shared components
 
 **Files:**
 - Create: `data/projects.ts`
@@ -747,8 +701,6 @@ git commit -m "feat: restructure app directory for locale-based routing with nex
 
 ```typescript
 // data/services.ts
-import { GraduationCap, Database, Camera, Music } from 'lucide-react';
-
 export interface ServiceCard {
   key: string;
   iconName: 'GraduationCap' | 'Database' | 'Camera' | 'Music';
@@ -933,6 +885,8 @@ export default function TechBadge({ label }: TechBadgeProps) {
 
 ```tsx
 // components/BackLink.tsx
+'use client';
+
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
@@ -1014,7 +968,7 @@ git commit -m "feat: add data layer and shared components"
 
 ---
 
-## Task 6: Build the Header component
+## Task 3: Build the Header component
 
 **Files:**
 - Create: `components/Header.tsx`
@@ -1200,7 +1154,7 @@ git commit -m "feat: add sticky header with nav and locale switching"
 
 ---
 
-## Task 7: Build Hero section
+## Task 4: Build Hero section
 
 **Files:**
 - Create: `components/Hero.tsx`
@@ -1295,7 +1249,7 @@ git commit -m "feat: add Hero section component"
 
 ---
 
-## Task 8: Build ServicesStrip section
+## Task 5: Build ServicesStrip section
 
 **Files:**
 - Create: `components/ServicesStrip.tsx`
@@ -1373,7 +1327,7 @@ git commit -m "feat: add ServicesStrip section component"
 
 ---
 
-## Task 9: Build ProjectsShowcase section
+## Task 6: Build ProjectsShowcase section
 
 **Files:**
 - Create: `components/ProjectsShowcase.tsx`
@@ -1437,7 +1391,7 @@ git commit -m "feat: add ProjectsShowcase section component"
 
 ---
 
-## Task 10: Build ResearchSection
+## Task 7: Build ResearchSection
 
 **Files:**
 - Create: `components/ResearchSection.tsx`
@@ -1551,7 +1505,7 @@ export default async function ResearchSection() {
           href="/research"
           className="text-emerald-300 hover:text-white transition-colors font-medium"
         >
-          View full research page →
+          {t('viewFullPage')}
         </Link>
       </div>
     </section>
@@ -1568,7 +1522,7 @@ git commit -m "feat: add ResearchSection component with timeline and Pluk de Dat
 
 ---
 
-## Task 11: Build TechStack and CreativeStack sections
+## Task 8: Build TechStack and CreativeStack sections
 
 **Files:**
 - Create: `components/TechStack.tsx`
@@ -1661,7 +1615,7 @@ git commit -m "feat: add TechStack and CreativeStack section components"
 
 ---
 
-## Task 12: Build AboutSection and ContactSection
+## Task 9: Build AboutSection and ContactSection
 
 **Files:**
 - Create: `components/AboutSection.tsx`
@@ -1748,7 +1702,7 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
-      <SectionHeading title={t('title')} id="contact" />
+      <SectionHeading title={t('title')} />
       <div className="max-w-2xl mx-auto text-center">
         <h3 className="text-2xl font-semibold text-emerald-100 mb-1">{t('subtitle')}</h3>
         <p className="text-emerald-300 mb-8">{t('role')}</p>
@@ -1803,7 +1757,7 @@ git commit -m "feat: add AboutSection and ContactSection components"
 
 ---
 
-## Task 13: Assemble the overview page
+## Task 10: Assemble the overview page
 
 **Files:**
 - Modify: `app/[locale]/page.tsx`
@@ -1818,7 +1772,6 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./data/**/*.{js,ts,jsx,tsx}",
@@ -1831,7 +1784,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
 export default config;
 ```
@@ -1882,7 +1835,7 @@ git commit -m "feat: assemble overview page with all section components"
 
 ---
 
-## Task 14: Clean up old components
+## Task 11: Clean up old components
 
 **Files:**
 - Delete: `components/BentoGrid.tsx`
@@ -1924,7 +1877,7 @@ git commit -m "chore: remove old components replaced by redesign"
 
 ---
 
-## Task 15: Build deep-dive project pages with MDX
+## Task 12: Build deep-dive project pages with MDX
 
 **Files:**
 - Create: `content/projects/sa3.mdx`
@@ -1980,6 +1933,7 @@ interface ProjectPageProps {
   description: string;
   techStack: string[];
   url?: string;
+  visitLabel?: string;
   children: React.ReactNode;
 }
 
@@ -1988,6 +1942,7 @@ export default async function ProjectPage({
   description,
   techStack,
   url,
+  visitLabel,
   children,
 }: ProjectPageProps) {
   return (
@@ -2012,7 +1967,7 @@ export default async function ProjectPage({
             className="inline-flex items-center gap-1.5 text-emerald-300 hover:text-white transition-colors mb-8"
           >
             <ExternalLink className="w-4 h-4" />
-            Visit live site
+            {visitLabel}
           </a>
         )}
 
@@ -2031,6 +1986,7 @@ export default async function ProjectPage({
 // app/[locale]/projects/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { getTranslations } from 'next-intl/server';
 import matter from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
@@ -2042,8 +1998,8 @@ export function generateStaticParams() {
   return validSlugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const filePath = path.join(process.cwd(), 'content', 'projects', `${slug}.mdx`);
 
   if (!fs.existsSync(filePath)) return {};
@@ -2057,8 +2013,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProjectDetailPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
 
   if (!validSlugs.includes(slug)) notFound();
 
@@ -2068,6 +2024,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const source = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(source);
+  const t = await getTranslations('Common');
 
   return (
     <ProjectPage
@@ -2075,6 +2032,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       description={data.description}
       techStack={data.techStack}
       url={data.url}
+      visitLabel={t('visitLiveSite')}
     >
       <MDXRemote source={content} />
     </ProjectPage>
@@ -2099,7 +2057,7 @@ git commit -m "feat: add MDX-powered project deep-dive pages"
 
 ---
 
-## Task 16: Build research deep-dive page
+## Task 13: Build research deep-dive page
 
 **Files:**
 - Modify: `app/[locale]/research/page.tsx`
@@ -2235,7 +2193,7 @@ git commit -m "feat: build research deep-dive page with YouTube embed"
 
 ---
 
-## Task 17: Build creative deep-dive page
+## Task 14: Build creative deep-dive page
 
 **Files:**
 - Modify: `app/[locale]/creative/page.tsx`
@@ -2259,6 +2217,7 @@ export async function generateMetadata() {
 
 export default async function CreativePage() {
   const t = await getTranslations('CreativeStack');
+  const common = await getTranslations('Common');
 
   const photos = ['photo1.jpg', 'photo2.jpg', 'photo3.jpg', 'photo4.jpg'];
 
@@ -2295,7 +2254,7 @@ export default async function CreativePage() {
             <h3 className="text-2xl font-semibold text-emerald-100">{t('musicProduction')}</h3>
           </div>
           <div className="rounded-xl p-6 bg-emerald-800/30 border border-emerald-700/30">
-            <p className="text-emerald-200/80">Content coming soon — music production portfolio in development.</p>
+            <p className="text-emerald-200/80">{common('comingSoonContent')}</p>
           </div>
         </div>
 
@@ -2306,7 +2265,7 @@ export default async function CreativePage() {
             <h3 className="text-2xl font-semibold text-emerald-100">{t('videoContent')}</h3>
           </div>
           <div className="rounded-xl p-6 bg-emerald-800/30 border border-emerald-700/30">
-            <p className="text-emerald-200/80">Content coming soon — video portfolio in development.</p>
+            <p className="text-emerald-200/80">{common('comingSoonContent')}</p>
           </div>
         </div>
 
@@ -2317,7 +2276,7 @@ export default async function CreativePage() {
             <h3 className="text-2xl font-semibold text-emerald-100">{t('design')}</h3>
           </div>
           <div className="rounded-xl p-6 bg-emerald-800/30 border border-emerald-700/30">
-            <p className="text-emerald-200/80">Content coming soon — design portfolio in development.</p>
+            <p className="text-emerald-200/80">{common('comingSoonContent')}</p>
           </div>
         </div>
       </div>
@@ -2343,7 +2302,7 @@ git commit -m "feat: build creative deep-dive page with photo gallery"
 
 ---
 
-## Task 18: Final build, lint, and cleanup
+## Task 15: Final build, lint, and cleanup
 
 **Files:**
 - Modify: `CLAUDE.md` (update to reflect new architecture)
