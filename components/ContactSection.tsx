@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
+import { contact } from '@stephen/business-config';
 import SectionHeading from './SectionHeading';
 
 export default function ContactSection() {
@@ -10,10 +11,10 @@ export default function ContactSection() {
   const [showPhone, setShowPhone] = useState(false);
 
   const contactLinks = [
-    { href: 'mailto:info@stephenadei.nl', icon: Mail, label: t('email') },
-    { href: 'https://wa.me/31647357426', icon: Phone, label: t('whatsapp') },
-    { href: 'https://www.linkedin.com/in/stephen-adei/', icon: Linkedin, label: t('linkedin') },
-    { href: 'https://github.com/stephenadei', icon: Github, label: t('github') },
+    { href: `mailto:${contact.email.primary}`, icon: Mail, label: t('email') },
+    { href: contact.whatsapp(contact.phone.primary.number), icon: Phone, label: t('whatsapp') },
+    { href: contact.social.linkedin, icon: Linkedin, label: t('linkedin') },
+    { href: contact.social.github, icon: Github, label: t('github') },
   ];
 
   return (
@@ -35,9 +36,13 @@ export default function ContactSection() {
         </div>
         <div className="mb-6">
           {showPhone ? (
-            <a href="tel:+31614189013" className="text-emerald-200 hover:text-white transition-colors">+31 6 14 18 90 13</a>
+            <a href={`tel:${contact.phone.primary.number}`} className="text-emerald-200 hover:text-white transition-colors">
+              {contact.phone.primary.display}
+            </a>
           ) : (
-            <button onClick={() => setShowPhone(true)} className="text-sm text-emerald-400 hover:text-emerald-200 transition-colors underline underline-offset-2">{t('showPhone')}</button>
+            <button onClick={() => setShowPhone(true)} className="text-sm text-emerald-400 hover:text-emerald-200 transition-colors underline underline-offset-2">
+              {t('showPhone')}
+            </button>
           )}
         </div>
         <p className="text-sm text-emerald-300/70">{t('available')}</p>
