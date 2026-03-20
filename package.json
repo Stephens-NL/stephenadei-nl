@@ -9,22 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-pdf-viewer/core": "^3.12.0",
-    "@react-pdf-viewer/default-layout": "^3.12.0",
-    "@react-pdf/renderer": "^3.4.4",
-    "focus-trap-react": "^10.2.3",
-    "i18next": "^23.15.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^0.441.0",
     "next": "14.2.35",
-    "next-i18next": "^15.3.1",
-    "pdfjs-dist": "^3.4.120",
+    "next-intl": "^4.8.3",
+    "next-mdx-remote": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-flagkit": "^2.0.4",
-    "react-i18next": "^15.0.2",
-    "react-icons": "^5.3.0",
-    "react-pdf": "^9.1.1",
-    "react-transition-group": "^4.4.5"
+    "react-icons": "^5.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",
