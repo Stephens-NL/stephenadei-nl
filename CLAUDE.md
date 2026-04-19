@@ -58,6 +58,15 @@ middleware.ts            # next-intl locale routing
 
 **Client components** (`'use client'`): Header, FlagButton, ContactSection, Modal, BackLink, YouTubeEmbed
 
+### Local Packages (`packages/`)
+
+```
+packages/
+  business-config/    # Local copy of @stephen/business-config (file: dependency)
+                      # Provides contact info, rates, pricing config
+                      # Used in ContactSection for email/phone/socials
+```
+
 ### Data Layer
 
 Content defined as typed arrays in `data/` (services, projects, research, techStack) with i18n keys referencing `messages/{en,nl}.json`. Deep-dive project content uses MDX files in `content/projects/*.mdx` rendered via `next-mdx-remote`.
@@ -81,4 +90,4 @@ docker compose up -d --build
 
 ## Stack
 
-Next.js 14, React 18, TypeScript, TailwindCSS 3, @tailwindcss/typography, next-intl, next-mdx-remote, gray-matter, lucide-react
+Next.js 14, React 18, TypeScript, TailwindCSS 3, @tailwindcss/typography, next-intl 4, next-mdx-remote 6, lucide-react, @stephen/business-config (local file: dependency)
