@@ -24,7 +24,7 @@ export default async function Hero() {
             <a href="#contact" className="px-8 py-3 border border-emerald-500 text-emerald-200 font-semibold rounded-lg hover:bg-emerald-500/10 transition-colors">{t('ctaContact')}</a>
           </div>
         </div>
-        <div className="hidden lg:block relative h-[500px] rounded-2xl overflow-hidden">
+        <div className="relative h-64 sm:h-80 lg:h-[500px] rounded-2xl overflow-hidden order-first lg:order-last">
           <Image src="/images/portraits/professional2.jpeg" alt="Stephen Adei" fill className="object-cover rounded-2xl" quality={90} priority />
         </div>
       </div>
