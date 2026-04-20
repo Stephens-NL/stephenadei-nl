@@ -2,14 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link, usePathname, useRouter } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import FlagButton from './FlagButton';
 import { Menu, X } from 'lucide-react';
 
 export default function Header() {
   const t = useTranslations('Nav');
   const pathname = usePathname();
-  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const isHome = pathname === '/';
