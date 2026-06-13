@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
-import { contact } from '@stephen/business-config';
+import { contact } from '@stephenadei/business-config';
 import SectionHeading from './SectionHeading';
 
 export default function ContactSection() {
