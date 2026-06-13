@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@stephen/business-config": "file:./packages/business-config",
+    "@stephenadei/business-config": "file:./packages/business-config",
     "@tailwindcss/typography": "^0.5.19",
     "lucide-react": "^0.441.0",
     "next": "14.2.35",
