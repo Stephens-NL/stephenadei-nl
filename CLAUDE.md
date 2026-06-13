@@ -62,7 +62,7 @@ middleware.ts            # next-intl locale routing
 
 ```
 packages/
-  business-config/    # Local copy of @stephen/business-config (file: dependency)
+  business-config/    # Local copy of @stephenadei/business-config (file: dependency)
                       # Provides contact info, rates, pricing config
                       # Used in ContactSection for email/phone/socials
 ```
@@ -90,4 +90,4 @@ docker compose up -d --build
 
 ## Stack
 
-Next.js 14, React 18, TypeScript, TailwindCSS 3, @tailwindcss/typography, next-intl 4, next-mdx-remote 6, lucide-react, @stephen/business-config (local file: dependency)
+Next.js 14, React 18, TypeScript, TailwindCSS 3, @tailwindcss/typography, next-intl 4, next-mdx-remote 6, lucide-react, @stephenadei/business-config (local file: dependency)
