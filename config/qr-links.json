@@ -2,5 +2,6 @@
   "_doc": "QR-link registry — go.stephenadei.nl/<slug> (nginx → /q/<slug> hier). Gedrukte QR's zijn onveranderbaar; wijzig hier de bestemming, nooit de slug. Wijziging = deploy (json wordt in de build gebundeld).",
   "card": "https://stephenadei.nl",
   "folio": "https://portfolio.stephenadei.nl/grainandgown",
-  "wa": "https://wa.me/31647357426"
+  "wa": "https://wa.me/31647357426",
+  "bijles": "https://www.stephensprivelessen.nl/aanmelden"
 }
