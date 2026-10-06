@@ -157,6 +157,54 @@
   "Common": {
     "backToHome": "← Back to home",
     "visitLiveSite": "Visit live site",
-    "comingSoonContent": "Content coming soon — portfolio in development."
+    "comingSoonContent": "Content coming soon — portfolio in development.",
+    "chatLabel": "Chat with Stephen",
+    "chatUnavailable": "Chat is unavailable right now. Send a message via",
+    "privacy": "Privacy"
+  },
+  "Privacy": {
+    "title": "Privacy statement",
+    "version": "Stephen Adei · Version 1.7 · 6 October 2026",
+    "sections": [
+      {
+        "title": "1. Who",
+        "body": [
+          "Stephen Adei is the controller for personal data processed via stephenadei.nl and the chat on this website. Questions: info@stephenadei.nl."
+        ]
+      },
+      {
+        "title": "2. Chat on the website",
+        "body": [
+          "The chat only loads after you click \"Chat with Stephen\". We then process your messages and what the chat software records technically: browser, operating system, the page you came from, your IP address and a rough location derived from it. You do not have to give a name, email or phone number. Purpose: answering your question (GDPR art. 6(1)(b), steps at your request before a possible collaboration)."
+        ]
+      },
+      {
+        "title": "3. Who we share it with",
+        "body": [
+          "Hetzner (Germany): our own server running our own installation of the Chatwoot chat software. Chat messages are stored there. Chatwoot is software we run ourselves, not an external service.",
+          "OpenAI (Codex, US) and Anthropic (Claude, US), tools that help prepare replies through Stephen's own subscriptions: the text of your chat message and the last few messages, with names replaced. Stephen checks and sends every reply himself; there is no automated decision-making. One exception: if you have had no reply after 6 hours, you receive a single fixed, pre-written message saying we will respond as soon as possible.",
+          "Cloudflare (DNS and proxy, EU/US): technical requests from your browser, including your IP address."
+        ]
+      },
+      {
+        "title": "4. How long",
+        "body": [
+          "Chats that do not lead to a collaboration are deleted after 12 months.",
+          "Our web server keeps a technical log (including IP address, requested page, time and browser type) for security and troubleshooting; it is deleted automatically after at most 14 days."
+        ]
+      },
+      {
+        "title": "5. Cookies",
+        "body": [
+          "Without a click on the chat, this site only sets the functional cookie NEXT_LOCALE (your language preference). If you open the chat yourself, the functional cookie cw_conversation is added (remembers your conversation, 1 year) and the chat window of our chat server stores data in your browser, because you asked for the chat. No tracking or advertising cookies."
+        ]
+      },
+      {
+        "title": "6. Your rights",
+        "body": [
+          "Access, rectification, erasure, restriction, portability and objection: email info@stephenadei.nl. We respond within one month. Complaints: the Dutch Data Protection Authority (autoriteitpersoonsgegevens.nl)."
+        ]
+      }
+    ]
   }
 }

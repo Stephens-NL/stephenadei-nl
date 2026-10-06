@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header';
+import ChatLauncher from '@/components/ChatLauncher';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -79,6 +80,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           {children}
+          <ChatLauncher />
         </NextIntlClientProvider>
       </body>
     </html>

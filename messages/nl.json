@@ -157,6 +157,54 @@
   "Common": {
     "backToHome": "← Terug naar home",
     "visitLiveSite": "Bezoek live site",
-    "comingSoonContent": "Binnenkort beschikbaar — portfolio in ontwikkeling."
+    "comingSoonContent": "Binnenkort beschikbaar — portfolio in ontwikkeling.",
+    "chatLabel": "Chat met Stephen",
+    "chatUnavailable": "Chat is even niet bereikbaar. Stuur een bericht via",
+    "privacy": "Privacy"
+  },
+  "Privacy": {
+    "title": "Privacyverklaring",
+    "version": "Stephen Adei · Versie 1.7 · 6 oktober 2026",
+    "sections": [
+      {
+        "title": "1. Wie",
+        "body": [
+          "Stephen Adei is verantwoordelijke voor de verwerking van persoonsgegevens via stephenadei.nl en de chat op deze website. Vragen: info@stephenadei.nl."
+        ]
+      },
+      {
+        "title": "2. Chat op de website",
+        "body": [
+          "Pas als je zelf op \"Chat met Stephen\" klikt, laadt de chat. Dan verwerken we je berichten en wat de chatsoftware technisch vastlegt: browser, besturingssysteem, de pagina waar je vandaan kwam, je IP-adres en een daarvan afgeleide globale locatie. Naam, e-mail of telefoonnummer hoef je niet op te geven. Doel: je vraag beantwoorden (AVG art. 6 lid 1 sub b, stappen op jouw verzoek vóór een eventuele samenwerking)."
+        ]
+      },
+      {
+        "title": "3. Met wie delen we",
+        "body": [
+          "Hetzner (Duitsland): eigen server waarop onze eigen installatie van de chatsoftware Chatwoot draait. Chatberichten worden daar bewaard. Chatwoot is software die we zelf beheren, geen externe dienst.",
+          "OpenAI (Codex, VS) en Anthropic (Claude, VS), hulpmiddelen bij het voorbereiden van antwoorden via Stephens eigen abonnementen: de tekst van je chatbericht en de laatste paar berichten, met namen vervangen. Elk antwoord wordt door Stephen zelf gecontroleerd en verstuurd; er vindt geen geautomatiseerde besluitvorming plaats. Eén uitzondering: heb je na 6 uur nog geen antwoord, dan krijg je één keer automatisch een vaste, vooraf geschreven melding dat we zo snel mogelijk reageren.",
+          "Cloudflare (DNS en proxy, EU/VS): technische verzoeken van je browser, waaronder je IP-adres."
+        ]
+      },
+      {
+        "title": "4. Hoe lang",
+        "body": [
+          "Chatgesprekken die niet tot een samenwerking leiden, verwijderen we na 12 maanden.",
+          "Onze webserver houdt een technisch logbestand bij (o.a. IP-adres, opgevraagde pagina, tijdstip en browsertype) voor beveiliging en storingen; dat wordt na maximaal 14 dagen automatisch verwijderd."
+        ]
+      },
+      {
+        "title": "5. Cookies",
+        "body": [
+          "Zonder klik op de chat zet deze site alleen de functionele cookie NEXT_LOCALE (je taalvoorkeur). Open je zelf de chat, dan komt de functionele cookie cw_conversation erbij (onthoudt je gesprek, 1 jaar) en slaat het chatvenster van onze chatserver gegevens in je browser op, omdat je zelf om de chat vraagt. Geen tracking- of advertentiecookies."
+        ]
+      },
+      {
+        "title": "6. Jouw rechten",
+        "body": [
+          "Inzage, rectificatie, verwijdering, beperking, overdraagbaarheid en bezwaar: mail info@stephenadei.nl. We reageren binnen één maand. Klachten: Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl)."
+        ]
+      }
+    ]
   }
 }
