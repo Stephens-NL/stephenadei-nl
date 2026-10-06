@@ -4,10 +4,12 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Mail, Phone, Linkedin, Github } from 'lucide-react';
 import { contact } from '@stephenadei/business-config';
+import { Link } from '@/i18n/navigation';
 import SectionHeading from './SectionHeading';
 
 export default function ContactSection() {
   const t = useTranslations('Contact');
+  const tc = useTranslations('Common');
   const [showPhone, setShowPhone] = useState(false);
 
   const contactLinks = [
@@ -45,7 +47,8 @@ export default function ContactSection() {
             </button>
           )}
         </div>
-        <p className="text-sm text-emerald-300/70">{t('available')}</p>
+        <p className="text-sm text-emerald-300/70 mb-3">{t('available')}</p>
+        <Link href="/privacy" className="text-sm text-emerald-300 underline">{tc('privacy')}</Link>
       </div>
     </section>
   );
