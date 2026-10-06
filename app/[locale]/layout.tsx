@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -81,24 +80,6 @@ export default async function RootLayout({
           <Header />
           {children}
         </NextIntlClientProvider>
-        <Script id="chatwoot-sdk">
-          {`
-            (function(d,t) {
-              var BASE_URL="https://crm.stephenadei.nl";
-              var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-              g.src=BASE_URL+"/packs/js/sdk.js";
-              g.defer = true;
-              g.async = true;
-              s.parentNode.insertBefore(g,s);
-              g.onload=function(){
-                window.chatwootSDK.run({
-                  websiteToken: 'p4kWNZbQeTEVvMXd6LqnjftF',
-                  baseUrl: BASE_URL
-                })
-              }
-            })(document,"script");
-          `}
-        </Script>
       </body>
     </html>
   );

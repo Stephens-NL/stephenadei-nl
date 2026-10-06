@@ -42,7 +42,7 @@ Key files: `i18n/routing.ts` (locale config), `i18n/request.ts` (server config),
 ```
 app/[locale]/
   page.tsx              # Overview page (all sections composed)
-  layout.tsx            # Root layout, NextIntlClientProvider, Chatwoot
+  layout.tsx            # Root layout, NextIntlClientProvider
   projects/[slug]/
     page.tsx             # MDX project deep-dive (generateStaticParams)
   research/
@@ -85,7 +85,6 @@ docker compose up -d --build
 
 ### External Integrations
 
-- **Chatwoot** chat widget loaded via `<Script>` in layout.tsx (base URL: `crm.stephenadei.nl`)
 - Path alias `@/*` maps to project root (tsconfig.json)
 
 ## Stack
