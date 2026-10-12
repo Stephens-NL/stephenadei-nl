@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+**Laatst geverifieerd:** 2026-10-12
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## What This Is
@@ -11,6 +13,7 @@ Personal portfolio/brand hub for Stephen Adei at [stephenadei.nl](https://stephe
 ```bash
 npm run dev          # Start dev server (localhost:3000)
 npm run build        # Production build (standalone output)
+npm run start        # Serve the production build
 npm run lint         # ESLint
 ```
 
@@ -49,6 +52,9 @@ app/[locale]/
     page.tsx             # Research with YouTube embed
   creative/
     page.tsx             # Creative portfolio
+  privacy/
+    page.tsx             # Privacy statement (covers the chat widget)
+app/q/[slug]/route.ts    # QR shortlink redirect (go.stephenadei.nl/<slug>), not localized
 middleware.ts            # next-intl locale routing
 ```
 
@@ -56,7 +62,7 @@ middleware.ts            # next-intl locale routing
 
 **Server components** (default — SSR + SEO): Hero, ServicesStrip, ProjectsShowcase, ResearchSection, TechStack, CreativeStack, AboutSection, ProjectPage, SectionHeading, TechBadge
 
-**Client components** (`'use client'`): Header, FlagButton, ContactSection, Modal, BackLink, YouTubeEmbed
+**Client components** (`'use client'`): Header, FlagButton, ChatLauncher, ContactSection, Modal, BackLink, YouTubeEmbed
 
 ### Local Packages (`packages/`)
 
@@ -66,6 +72,14 @@ packages/
                       # Provides contact info, rates, pricing config
                       # Used in ContactSection for email/phone/socials
 ```
+
+### Chat widget (`lib/` holds only `chatwoot.ts`)
+
+`components/ChatLauncher.tsx` ("Chat met Stephen") calls `lib/chatwoot.ts` `openChat()`, which injects the Chatwoot SDK (crm.sadei.nl, website inbox token is public) only on click: nothing loads and no cookie is set before that (privacy statement). `onFail` on load error/timeout.
+
+### QR shortlinks
+
+`config/qr-links.json` is the slug -> destination registry behind `app/q/[slug]/route.ts` (nginx rewrites go.stephenadei.nl/<slug> to /q/<slug>). Change the destination, never the slug; the JSON is bundled at build, so a change needs a deploy. Scans are appended to `QR_SCAN_LOG_DIR` (default `/app/qr-data`, volume `/home/stephen/data/qr`).
 
 ### Data Layer
 
@@ -83,8 +97,9 @@ Dockerized with standalone Next.js output. Runs on port **4303** via `docker-com
 docker compose up -d --build
 ```
 
-### External Integrations
+### Environment / Gotchas
 
+- Env: `QR_SCAN_LOG_DIR` only (compose sets NODE_ENV, PORT=4303, HOSTNAME). No test suite in this repo; verify with `npm run lint` + `npm run build`.
 - Path alias `@/*` maps to project root (tsconfig.json)
 
 ## Stack
