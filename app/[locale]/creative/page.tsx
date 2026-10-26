@@ -1,14 +1,17 @@
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { Camera, Music, Video, Palette } from 'lucide-react';
+import { buildOpenGraph } from '@/lib/seo';
 import BackLink from '@/components/BackLink';
 import SectionHeading from '@/components/SectionHeading';
 
-export async function generateMetadata() {
-  return {
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  return buildOpenGraph({
+    locale: params.locale,
+    path: '/creative',
     title: 'Creative — Stephen Adei',
     description: 'Photography, music production, video content, and design work by Stephen Adei.',
-  };
+  });
 }
 
 export default async function CreativePage() {
