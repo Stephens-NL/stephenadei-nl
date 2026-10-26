@@ -1,9 +1,15 @@
 import { getTranslations } from 'next-intl/server';
+import { buildOpenGraph } from '@/lib/seo';
 import BackLink from '@/components/BackLink';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: { locale: string } }) {
   const t = await getTranslations('Privacy');
-  return { title: `${t('title')} — Stephen Adei` };
+  return buildOpenGraph({
+    locale: params.locale,
+    path: '/privacy',
+    title: `${t('title')} — Stephen Adei`,
+    description: (t.raw('sections') as { body: string[] }[])[0]?.body[0] ?? 'Privacy — Stephen Adei',
+  });
 }
 
 export default async function PrivacyPage() {

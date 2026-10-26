@@ -1,15 +1,18 @@
 import { getTranslations } from 'next-intl/server';
 import { Download, ExternalLink } from 'lucide-react';
+import { buildOpenGraph } from '@/lib/seo';
 import BackLink from '@/components/BackLink';
 import SectionHeading from '@/components/SectionHeading';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
 import { theses, education } from '@/data/research';
 
-export async function generateMetadata() {
-  return {
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  return buildOpenGraph({
+    locale: params.locale,
+    path: '/research',
     title: 'Research — Stephen Adei',
     description: 'Academic research, theses, and projects in mathematics, quantum computing, and computational thinking.',
-  };
+  });
 }
 
 export default async function ResearchPage() {
