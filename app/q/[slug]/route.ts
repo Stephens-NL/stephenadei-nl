@@ -6,6 +6,13 @@ import links from '@/config/qr-links.json';
 // /q/<slug>). Printed QR codes never change — only this registry does.
 export const dynamic = 'force-dynamic';
 
+function device(ua: string): string {
+  if (/bot|crawl|spider|curl|wget|preview|headless/i.test(ua)) return 'bot';
+  if (/iphone|ipad/i.test(ua)) return 'ios';
+  if (/android/i.test(ua)) return 'android';
+  return ua ? 'desktop' : 'unknown';
+}
+
 const SCAN_LOG_DIR = process.env.QR_SCAN_LOG_DIR || '/app/qr-data';
 
 export async function GET(
@@ -25,9 +32,13 @@ export async function GET(
           hit: Boolean(target),
           ua: req.headers.get('user-agent') ?? '',
           ref: req.headers.get('referer') ?? '',
+          // Cloudflare visitor location; never the IP
+          country: req.headers.get('cf-ipcountry') ?? '',
+          city: req.headers.get('cf-ipcity') ?? '',
+          device: device(req.headers.get('user-agent') ?? ''),
         }) + '\n',
       );
-    } catch { /* logging is best-effort */ }
+    } catch (e) { console.error('qr scan log failed:', e); } // best-effort, but visible
   })();
   if (!target) return NextResponse.redirect('https://stephenadei.nl', 302);
   return NextResponse.redirect(target, 302);
