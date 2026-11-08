@@ -17,6 +17,7 @@ const CHIPS = [
   { label: 'IG · events', href: 'https://instagram.com/stephensevents' },
   { label: 'IG · DJ', href: 'https://instagram.com/askthemadhatter' },
   { label: 'Blog', href: 'https://blog.stephenadei.nl' },
+  { label: 'Email', href: 'mailto:info@stephenadei.nl' },
 ];
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
