@@ -206,5 +206,28 @@
         ]
       }
     ]
+  },
+  "Links": {
+    "description": "Lessen, filmshoots, DJ-sets of data engineering — kies waarvoor je komt.",
+    "intro": "Hoi, ik ben Stephen Adei.\nAmsterdam.",
+    "title": "Waarvoor kom je?",
+    "lessons": {
+      "label": "Ik wil lessen",
+      "sub": "Stephen's Privélessen · gratis proefles"
+    },
+    "shoot": {
+      "label": "Ik wil een shoot",
+      "sub": "Portretten & events op film"
+    },
+    "dj": {
+      "label": "Ik wil een DJ",
+      "sub": "Mad Hatter · mixes op SoundCloud"
+    },
+    "work": {
+      "label": "Ik wil samenwerken",
+      "sub": "Data engineering · LinkedIn"
+    },
+    "follow": "Of volg mee",
+    "whatsapp": "Twijfel je? Stuur me een WhatsApp"
   }
 }

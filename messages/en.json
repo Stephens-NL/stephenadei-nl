@@ -206,5 +206,28 @@
         ]
       }
     ]
+  },
+  "Links": {
+    "description": "Lessons, film shoots, DJ sets or data engineering — pick what brings you here.",
+    "intro": "Hi, I'm Stephen Adei.\nAmsterdam.",
+    "title": "What brings you here?",
+    "lessons": {
+      "label": "I want lessons",
+      "sub": "Stephen's Privélessen · free trial"
+    },
+    "shoot": {
+      "label": "I want a shoot",
+      "sub": "Portraits & events on film"
+    },
+    "dj": {
+      "label": "I want a DJ",
+      "sub": "Mad Hatter · mixes on SoundCloud"
+    },
+    "work": {
+      "label": "I want to work together",
+      "sub": "Data engineering · LinkedIn"
+    },
+    "follow": "Or follow along",
+    "whatsapp": "Not sure? Send me a WhatsApp"
   }
 }
