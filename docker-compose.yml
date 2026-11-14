@@ -4,7 +4,7 @@ services:
     container_name: stephenadei-nl
     restart: unless-stopped
     ports:
-      - "4303:4303"
+      - "127.0.0.1:4303:4303"
     volumes:
       - /home/stephen/data/qr:/app/qr-data
     environment:
